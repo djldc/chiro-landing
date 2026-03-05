@@ -1,0 +1,744 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ChiroTemplate — Complete Chiropractic Website Template</title>
+  <meta name="description" content="Launch a professional chiropractic website in minutes. Built-in online booking, patient portal, admin panel, email notifications and more. One-time payment, no monthly fees." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,700;1,700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --gold: #c9a84c;
+      --gold-light: #e0c06a;
+      --gold-dim: rgba(201,168,76,0.15);
+      --bg: #0e0e0e;
+      --bg2: #141414;
+      --bg3: #1a1a1a;
+      --border: rgba(255,255,255,0.08);
+      --text: #f0ece4;
+      --muted: #888;
+      --green: #22c55e;
+    }
+
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; }
+
+    a { color: inherit; text-decoration: none; }
+
+    /* ── NAV ── */
+    nav {
+      position: sticky; top: 0; z-index: 100;
+      background: rgba(14,14,14,0.92); backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      padding: 0 24px; height: 68px;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .nav-logo { display: flex; align-items: center; gap: 10px; }
+    .nav-logo-mark {
+      width: 36px; height: 36px; border-radius: 8px;
+      background: linear-gradient(135deg, #1a4a6e, #2d8a6e);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 18px;
+    }
+    .nav-brand { font-weight: 700; font-size: 15px; color: var(--gold); }
+    .nav-brand span { color: var(--text); font-weight: 400; }
+    .nav-actions { display: flex; align-items: center; gap: 12px; }
+    .btn-ghost {
+      padding: 8px 16px; border: 1px solid var(--border); border-radius: 8px;
+      font-size: 13px; font-weight: 600; color: var(--muted); cursor: pointer;
+      transition: all 0.2s; background: none;
+    }
+    .btn-ghost:hover { color: var(--text); border-color: rgba(255,255,255,0.2); }
+    .btn-gold {
+      padding: 10px 20px; background: var(--gold); border: none; border-radius: 8px;
+      font-size: 13px; font-weight: 700; color: #0e0e0e; cursor: pointer;
+      transition: all 0.2s;
+    }
+    .btn-gold:hover { background: var(--gold-light); transform: translateY(-1px); }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: 92vh; display: flex; align-items: center;
+      padding: 80px 24px 60px;
+      background: radial-gradient(ellipse 70% 60% at 60% 40%, rgba(201,168,76,0.06) 0%, transparent 70%),
+                  radial-gradient(ellipse 50% 50% at 10% 80%, rgba(26,74,110,0.12) 0%, transparent 60%);
+    }
+    .hero-inner { max-width: 1160px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; }
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: var(--gold-dim); border: 1px solid rgba(201,168,76,0.3);
+      border-radius: 100px; padding: 6px 14px; font-size: 12px; font-weight: 600;
+      color: var(--gold); margin-bottom: 24px;
+    }
+    .hero-badge::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: var(--gold); animation: pulse 2s infinite; }
+    @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.4} }
+    .hero h1 {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: clamp(40px, 5vw, 62px); font-weight: 700; line-height: 1.1;
+      margin-bottom: 20px; letter-spacing: -0.02em;
+    }
+    .hero h1 em { font-style: italic; color: var(--gold); }
+    .hero-sub { font-size: 18px; color: #aaa; line-height: 1.7; margin-bottom: 36px; max-width: 480px; }
+    .hero-sub strong { color: var(--text); }
+    .hero-cta { display: flex; gap: 12px; flex-wrap: wrap; align-items: center; margin-bottom: 48px; }
+    .btn-hero-primary {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 15px 28px; background: var(--gold); border-radius: 10px;
+      font-size: 15px; font-weight: 700; color: #0e0e0e;
+      transition: all 0.2s; border: none; cursor: pointer;
+    }
+    .btn-hero-primary:hover { background: var(--gold-light); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(201,168,76,0.3); }
+    .btn-hero-secondary {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 15px 28px; border: 1.5px solid var(--border); border-radius: 10px;
+      font-size: 15px; font-weight: 600; color: var(--text);
+      transition: all 0.2s; background: none; cursor: pointer;
+    }
+    .btn-hero-secondary:hover { border-color: rgba(255,255,255,0.25); background: rgba(255,255,255,0.04); }
+    .hero-proof { display: flex; gap: 32px; }
+    .proof-item { }
+    .proof-num { font-size: 24px; font-weight: 800; color: var(--gold); }
+    .proof-label { font-size: 12px; color: var(--muted); margin-top: 2px; }
+
+    /* ── BROWSER MOCKUP ── */
+    .browser-mockup {
+      background: #1c1c1e; border-radius: 14px; overflow: hidden;
+      border: 1px solid rgba(255,255,255,0.1);
+      box-shadow: 0 32px 80px rgba(0,0,0,0.5), 0 0 0 1px rgba(255,255,255,0.05);
+      transform: perspective(1000px) rotateY(-4deg) rotateX(2deg);
+      transition: transform 0.4s ease;
+    }
+    .browser-mockup:hover { transform: perspective(1000px) rotateY(-2deg) rotateX(1deg); }
+    .browser-bar {
+      background: #2a2a2e; padding: 10px 16px;
+      display: flex; align-items: center; gap: 10px;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+    .browser-dots { display: flex; gap: 6px; }
+    .browser-dots span { width: 11px; height: 11px; border-radius: 50%; }
+    .browser-dots span:nth-child(1) { background: #ff5f57; }
+    .browser-dots span:nth-child(2) { background: #febc2e; }
+    .browser-dots span:nth-child(3) { background: #28c840; }
+    .browser-url {
+      flex: 1; background: #1c1c1e; border-radius: 6px; padding: 4px 12px;
+      font-size: 11px; color: #666; text-align: center;
+    }
+    .browser-content { position: relative; }
+    .browser-content img { width: 100%; display: block; }
+    .mockup-screen {
+      background: linear-gradient(160deg, #0f1f2e 0%, #0e1a14 100%);
+      padding: 20px;
+      min-height: 360px;
+    }
+    .mockup-header {
+      background: rgba(255,255,255,0.04); border-radius: 8px; padding: 10px 14px;
+      display: flex; align-items: center; justify-content: space-between; margin-bottom: 16px;
+    }
+    .mockup-logo-row { display: flex; align-items: center; gap: 8px; }
+    .mockup-logo-dot { width: 28px; height: 28px; border-radius: 6px; background: linear-gradient(135deg, #1a4a6e, #2d8a6e); display: flex; align-items: center; justify-content: center; font-size: 14px; }
+    .mockup-brand { font-size: 11px; font-weight: 700; color: #7ec8e3; }
+    .mockup-nav { display: flex; gap: 12px; }
+    .mockup-nav span { font-size: 9px; color: #666; }
+    .mockup-nav span.active { color: #7ec8e3; }
+    .mockup-btn { background: #1a4a6e; border-radius: 5px; padding: 5px 10px; font-size: 9px; font-weight: 700; color: #fff; }
+    .mockup-hero-area { padding: 20px 0 16px; }
+    .mockup-hero-tag { background: rgba(26,74,110,0.3); border: 1px solid rgba(26,74,110,0.5); border-radius: 100px; display: inline-block; padding: 3px 10px; font-size: 8px; color: #7ec8e3; margin-bottom: 10px; }
+    .mockup-h1 { font-size: 20px; font-weight: 800; color: #fff; line-height: 1.2; margin-bottom: 8px; }
+    .mockup-h1 span { color: #7ec8e3; }
+    .mockup-sub { font-size: 9px; color: #888; line-height: 1.6; margin-bottom: 14px; max-width: 200px; }
+    .mockup-cta-row { display: flex; gap: 8px; }
+    .mockup-cta1 { background: #1a4a6e; border-radius: 6px; padding: 7px 14px; font-size: 9px; font-weight: 700; color: #fff; }
+    .mockup-cta2 { border: 1px solid rgba(255,255,255,0.15); border-radius: 6px; padding: 7px 14px; font-size: 9px; color: #aaa; }
+    .mockup-cards { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 8px; margin-top: 16px; }
+    .mockup-card { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.07); border-radius: 8px; padding: 10px; }
+    .mockup-card-icon { font-size: 16px; margin-bottom: 6px; }
+    .mockup-card-title { font-size: 8px; font-weight: 700; color: #ddd; margin-bottom: 4px; }
+    .mockup-card-line { height: 4px; background: rgba(255,255,255,0.08); border-radius: 2px; margin-bottom: 3px; }
+    .mockup-card-line.short { width: 60%; }
+
+    /* Floating badges */
+    .mockup-float {
+      position: absolute; background: #1c1c1e; border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 10px; padding: 8px 12px; font-size: 10px; font-weight: 700;
+      display: flex; align-items: center; gap: 7px; color: #fff;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.4);
+    }
+    .mockup-float.top-right { top: 16px; right: -20px; }
+    .mockup-float.bottom-right { bottom: 40px; right: -24px; }
+    .badge-icon { font-size: 16px; }
+
+    /* ── LOGOS / TRUST ── */
+    .trust { padding: 32px 24px; border-bottom: 1px solid var(--border); }
+    .trust-inner { max-width: 1160px; margin: 0 auto; text-align: center; }
+    .trust p { font-size: 12px; color: var(--muted); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 20px; }
+    .trust-logos { display: flex; justify-content: center; align-items: center; gap: 40px; flex-wrap: wrap; }
+    .trust-logo { font-size: 13px; font-weight: 700; color: #444; letter-spacing: 0.5px; }
+
+    /* ── SECTIONS ── */
+    section { padding: 96px 24px; }
+    .section-inner { max-width: 1160px; margin: 0 auto; }
+    .section-tag {
+      display: inline-block; background: var(--gold-dim); border: 1px solid rgba(201,168,76,0.25);
+      border-radius: 100px; padding: 4px 14px; font-size: 11px; font-weight: 700;
+      color: var(--gold); text-transform: uppercase; letter-spacing: 0.8px; margin-bottom: 16px;
+    }
+    h2 {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: clamp(30px, 4vw, 46px); font-weight: 700; line-height: 1.15;
+      margin-bottom: 16px; letter-spacing: -0.02em;
+    }
+    h2 em { color: var(--gold); font-style: italic; }
+    .section-sub { font-size: 17px; color: #888; line-height: 1.7; max-width: 560px; }
+
+    /* ── FEATURES ── */
+    .features-bg { background: var(--bg2); }
+    .features-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; margin-top: 56px; }
+    .feature-card {
+      background: var(--bg3); padding: 32px 28px;
+      border: 1px solid var(--border);
+      transition: border-color 0.2s;
+    }
+    .feature-card:hover { border-color: rgba(201,168,76,0.3); }
+    .feature-icon { font-size: 28px; margin-bottom: 16px; }
+    .feature-title { font-size: 16px; font-weight: 700; margin-bottom: 8px; color: var(--text); }
+    .feature-desc { font-size: 14px; color: #777; line-height: 1.65; }
+    .feature-tag {
+      display: inline-block; margin-top: 12px; padding: 3px 10px;
+      background: rgba(34,197,94,0.1); border-radius: 100px;
+      font-size: 10px; font-weight: 700; color: var(--green); letter-spacing: 0.3px;
+    }
+
+    /* ── WHAT'S INCLUDED ── */
+    .included-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; margin-top: 56px; align-items: start; }
+    .included-list { display: flex; flex-direction: column; gap: 12px; }
+    .included-item {
+      display: flex; align-items: flex-start; gap: 12px; padding: 14px 16px;
+      background: var(--bg3); border: 1px solid var(--border); border-radius: 10px;
+      transition: border-color 0.2s;
+    }
+    .included-item:hover { border-color: rgba(201,168,76,0.25); }
+    .check { font-size: 16px; flex-shrink: 0; margin-top: 1px; }
+    .included-text strong { display: block; font-size: 14px; font-weight: 600; color: var(--text); margin-bottom: 2px; }
+    .included-text span { font-size: 13px; color: #666; }
+
+    /* comparison box */
+    .vs-box {
+      background: linear-gradient(160deg, #0f1f2e, #0a1a10);
+      border: 1px solid rgba(201,168,76,0.2); border-radius: 16px; padding: 32px;
+      position: sticky; top: 88px;
+    }
+    .vs-box h3 { font-size: 18px; font-weight: 700; margin-bottom: 24px; color: var(--text); }
+    .vs-row { display: flex; justify-content: space-between; align-items: center; padding: 12px 0; border-bottom: 1px solid var(--border); }
+    .vs-row:last-child { border-bottom: none; }
+    .vs-label { font-size: 13px; color: #888; }
+    .vs-them { font-size: 13px; color: #ff6b6b; font-weight: 600; }
+    .vs-us { font-size: 13px; color: var(--green); font-weight: 700; }
+    .vs-highlight {
+      margin-top: 20px; background: var(--gold-dim); border: 1px solid rgba(201,168,76,0.3);
+      border-radius: 10px; padding: 14px 16px; text-align: center;
+    }
+    .vs-highlight .big { font-size: 28px; font-weight: 800; color: var(--gold); }
+    .vs-highlight .sub { font-size: 12px; color: #888; margin-top: 2px; }
+
+    /* ── PRICING ── */
+    .pricing-bg { background: var(--bg2); }
+    .pricing-wrap { margin-top: 56px; display: flex; justify-content: center; }
+    .pricing-card {
+      background: var(--bg3); border: 1px solid rgba(201,168,76,0.4); border-radius: 20px;
+      padding: 48px; max-width: 520px; width: 100%; position: relative; overflow: hidden;
+    }
+    .pricing-card::before {
+      content: ""; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+      background: linear-gradient(90deg, var(--gold), var(--gold-light));
+    }
+    .pricing-badge {
+      display: inline-block; background: var(--gold); color: #0e0e0e;
+      font-size: 11px; font-weight: 800; padding: 4px 12px; border-radius: 100px;
+      text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 24px;
+    }
+    .pricing-name { font-size: 22px; font-weight: 800; margin-bottom: 8px; }
+    .pricing-price-row { display: flex; align-items: flex-end; gap: 8px; margin-bottom: 6px; }
+    .pricing-price { font-size: 64px; font-weight: 800; color: var(--gold); line-height: 1; }
+    .pricing-period { font-size: 14px; color: #666; margin-bottom: 8px; }
+    .pricing-was { font-size: 13px; color: #555; text-decoration: line-through; margin-bottom: 4px; }
+    .pricing-save { font-size: 12px; color: var(--green); font-weight: 700; margin-bottom: 28px; }
+    .pricing-divider { height: 1px; background: var(--border); margin: 24px 0; }
+    .pricing-features { display: flex; flex-direction: column; gap: 10px; margin-bottom: 32px; }
+    .pricing-feat { display: flex; align-items: center; gap: 10px; font-size: 14px; color: #bbb; }
+    .pricing-feat .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--gold); flex-shrink: 0; }
+    .btn-buy {
+      display: block; width: 100%; padding: 17px; background: var(--gold);
+      border: none; border-radius: 12px; font-size: 16px; font-weight: 800;
+      color: #0e0e0e; cursor: pointer; text-align: center;
+      transition: all 0.2s;
+    }
+    .btn-buy:hover { background: var(--gold-light); transform: translateY(-2px); box-shadow: 0 12px 32px rgba(201,168,76,0.35); }
+    .pricing-note { font-size: 12px; color: #555; text-align: center; margin-top: 14px; }
+    .pricing-side { margin-top: 32px; display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    .side-item { background: rgba(255,255,255,0.03); border: 1px solid var(--border); border-radius: 10px; padding: 16px; text-align: center; }
+    .side-icon { font-size: 20px; margin-bottom: 6px; }
+    .side-label { font-size: 12px; color: #777; }
+
+    /* ── FAQ ── */
+    .faq-list { margin-top: 48px; display: flex; flex-direction: column; gap: 2px; }
+    details {
+      background: var(--bg3); border: 1px solid var(--border); border-radius: 12px;
+      overflow: hidden; transition: border-color 0.2s;
+    }
+    details:hover { border-color: rgba(255,255,255,0.15); }
+    details[open] { border-color: rgba(201,168,76,0.35); }
+    summary {
+      padding: 20px 24px; font-size: 15px; font-weight: 600; cursor: pointer;
+      display: flex; justify-content: space-between; align-items: center;
+      list-style: none; user-select: none;
+    }
+    summary::-webkit-details-marker { display: none; }
+    summary::after { content: "+"; font-size: 20px; color: var(--gold); font-weight: 300; transition: transform 0.2s; }
+    details[open] summary::after { transform: rotate(45deg); }
+    .faq-answer { padding: 0 24px 20px; font-size: 14px; color: #888; line-height: 1.75; }
+    .faq-answer a { color: var(--gold); }
+
+    /* ── DEMO CTA ── */
+    .demo-cta {
+      padding: 96px 24px;
+      background: radial-gradient(ellipse 80% 70% at 50% 50%, rgba(201,168,76,0.07) 0%, transparent 70%);
+      text-align: center;
+    }
+    .demo-cta h2 { margin-bottom: 16px; }
+    .demo-cta .section-sub { margin: 0 auto 40px; }
+    .demo-btns { display: flex; justify-content: center; gap: 14px; flex-wrap: wrap; }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--bg2); border-top: 1px solid var(--border);
+      padding: 40px 24px; text-align: center;
+    }
+    .footer-logo { display: flex; align-items: center; justify-content: center; gap: 8px; margin-bottom: 12px; }
+    .footer-text { font-size: 13px; color: #555; }
+    .footer-text a { color: #666; }
+    .footer-text a:hover { color: var(--gold); }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      .hero-inner { grid-template-columns: 1fr; gap: 48px; }
+      .browser-mockup { transform: none !important; }
+      .mockup-float { display: none; }
+      .features-grid { grid-template-columns: 1fr 1fr; }
+      .included-grid { grid-template-columns: 1fr; }
+      .vs-box { position: static; }
+    }
+    @media (max-width: 600px) {
+      .features-grid { grid-template-columns: 1fr; }
+      nav { padding: 0 16px; }
+      .hero { padding: 60px 16px 48px; }
+      section { padding: 64px 16px; }
+      .pricing-card { padding: 32px 24px; }
+      .hero-proof { gap: 20px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ── NAV ── -->
+<nav>
+  <div class="nav-logo">
+    <div class="nav-logo-mark">⚕</div>
+    <div>
+      <span class="nav-brand">Chiro<span>Template</span></span>
+    </div>
+  </div>
+  <div class="nav-actions">
+    <a href="https://demo.wellspringweb.com" target="_blank" class="btn-ghost">View Demo</a>
+    <a href="#pricing" class="btn-gold">Get It — $499</a>
+  </div>
+</nav>
+
+<!-- ── HERO ── -->
+<section class="hero">
+  <div class="hero-inner">
+    <div>
+      <div class="hero-badge">Launch Special — Save $300</div>
+      <h1>Your Chiropractic Practice,<br /><em>Online in Minutes</em></h1>
+      <p class="hero-sub">
+        A complete, professional chiropractic website with <strong>online booking, patient portal,
+        admin panel,</strong> and email notifications — built, owned, and deployed by you.
+        <strong>No monthly platform fees.</strong>
+      </p>
+      <div class="hero-cta">
+        <a href="#pricing" class="btn-hero-primary">Get ChiroTemplate — $499 →</a>
+        <a href="https://demo.wellspringweb.com" target="_blank" class="btn-hero-secondary">▶ View Live Demo</a>
+      </div>
+      <div class="hero-proof">
+        <div class="proof-item">
+          <div class="proof-num">$0</div>
+          <div class="proof-label">Monthly fees</div>
+        </div>
+        <div class="proof-item">
+          <div class="proof-num">15 min</div>
+          <div class="proof-label">Avg. setup time</div>
+        </div>
+        <div class="proof-item">
+          <div class="proof-num">100%</div>
+          <div class="proof-label">You own the code</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Browser Mockup -->
+    <div style="position: relative;">
+      <div class="browser-mockup">
+        <div class="browser-bar">
+          <div class="browser-dots">
+            <span></span><span></span><span></span>
+          </div>
+          <div class="browser-url">demo.wellspringweb.com</div>
+        </div>
+        <div class="browser-content">
+          <div class="mockup-screen">
+            <div class="mockup-header">
+              <div class="mockup-logo-row">
+                <div class="mockup-logo-dot">⚕</div>
+                <div class="mockup-brand">Mitchell Family Chiro</div>
+              </div>
+              <div class="mockup-nav">
+                <span class="active">Home</span>
+                <span>Services</span>
+                <span>About</span>
+                <span>Contact</span>
+              </div>
+              <div class="mockup-btn">Book Now</div>
+            </div>
+            <div class="mockup-hero-area">
+              <div class="mockup-hero-tag">✦ Now Accepting New Patients</div>
+              <div class="mockup-h1">Feel Better,<br /><span>Live Better</span></div>
+              <div class="mockup-sub">Expert chiropractic care for the whole family. Same-day appointments available.</div>
+              <div class="mockup-cta-row">
+                <div class="mockup-cta1">Book Appointment</div>
+                <div class="mockup-cta2">Meet Our Team</div>
+              </div>
+            </div>
+            <div class="mockup-cards">
+              <div class="mockup-card">
+                <div class="mockup-card-icon">📅</div>
+                <div class="mockup-card-title">Online Booking</div>
+                <div class="mockup-card-line"></div>
+                <div class="mockup-card-line short"></div>
+              </div>
+              <div class="mockup-card">
+                <div class="mockup-card-icon">🔐</div>
+                <div class="mockup-card-title">Patient Portal</div>
+                <div class="mockup-card-line"></div>
+                <div class="mockup-card-line short"></div>
+              </div>
+              <div class="mockup-card">
+                <div class="mockup-card-icon">📊</div>
+                <div class="mockup-card-title">Admin Panel</div>
+                <div class="mockup-card-line"></div>
+                <div class="mockup-card-line short"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Floating badges -->
+      <div class="mockup-float top-right">
+        <span class="badge-icon">⭐</span>
+        <div>
+          <div style="font-size:11px;font-weight:800;">Fully Customizable</div>
+          <div style="font-size:10px;color:#888;font-weight:400;">Admin panel included</div>
+        </div>
+      </div>
+      <div class="mockup-float bottom-right">
+        <span class="badge-icon">⚡</span>
+        <div>
+          <div style="font-size:11px;font-weight:800;">Deploy in Minutes</div>
+          <div style="font-size:10px;color:#888;font-weight:400;">Netlify + Supabase</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── TRUST ── -->
+<div class="trust">
+  <div class="trust-inner">
+    <p>Powered by trusted, industry-standard platforms</p>
+    <div class="trust-logos">
+      <div class="trust-logo">⚡ NETLIFY</div>
+      <div class="trust-logo">🔐 SUPABASE</div>
+      <div class="trust-logo">✉️ RESEND</div>
+      <div class="trust-logo">💳 STRIPE</div>
+      <div class="trust-logo">📅 GOOGLE CALENDAR</div>
+      <div class="trust-logo">🍋 LEMON SQUEEZY</div>
+    </div>
+  </div>
+</div>
+
+<!-- ── FEATURES ── -->
+<section class="features-bg">
+  <div class="section-inner">
+    <div class="section-tag">Everything Included</div>
+    <h2>Not just a template —<br /><em>a complete platform</em></h2>
+    <p class="section-sub">Everything a modern chiropractic practice needs to attract patients, manage appointments, and grow — without the monthly subscription trap.</p>
+
+    <div class="features-grid">
+      <div class="feature-card">
+        <div class="feature-icon">📅</div>
+        <div class="feature-title">Online Booking System</div>
+        <div class="feature-desc">Multi-step booking flow with service selection, provider choice, date/time picker, and instant confirmation emails. Works with your Google Calendar.</div>
+        <span class="feature-tag">✓ Built-in</span>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🔐</div>
+        <div class="feature-title">Patient Portal</div>
+        <div class="feature-desc">Patients log in to view appointments, complete intake forms, message your team, and access their notes — all in a branded, secure portal.</div>
+        <span class="feature-tag">✓ Built-in</span>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">⚙️</div>
+        <div class="feature-title">Visual Admin Panel</div>
+        <div class="feature-desc">Change your logo, colors, services, hours, team, and every piece of content — no code, no plugins, no developer needed.</div>
+        <span class="feature-tag">✓ Built-in</span>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">✉️</div>
+        <div class="feature-title">Email & SMS Notifications</div>
+        <div class="feature-desc">Automatic appointment confirmations, 24-hour reminders, and new patient welcome emails — all branded to your practice.</div>
+        <span class="feature-tag">✓ Built-in</span>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">📝</div>
+        <div class="feature-title">Digital Intake Forms</div>
+        <div class="feature-desc">Patients complete their intake forms online before their first visit. Responses are saved to their portal profile automatically.</div>
+        <span class="feature-tag">✓ Built-in</span>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">📰</div>
+        <div class="feature-title">Built-in Blog</div>
+        <div class="feature-desc">Publish health tips and practice news to attract organic traffic. Full admin editor — no CMS subscription required.</div>
+        <span class="feature-tag">✓ Built-in</span>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">💳</div>
+        <div class="feature-title">Online Bill Pay</div>
+        <div class="feature-desc">Accept payments via Stripe directly on your site. Simple payment link setup or full on-site checkout — your choice.</div>
+        <span class="feature-tag">✓ Built-in</span>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">📱</div>
+        <div class="feature-title">Fully Responsive</div>
+        <div class="feature-desc">Looks and works perfectly on every device — mobile, tablet, and desktop. Built with modern CSS and tested across all screen sizes.</div>
+        <span class="feature-tag">✓ Built-in</span>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🚀</div>
+        <div class="feature-title">Launch Wizard</div>
+        <div class="feature-desc">A guided setup wizard walks you through practice info, hours, team, and branding — your site is ready to go in under 15 minutes.</div>
+        <span class="feature-tag">✓ Built-in</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── WHAT'S INCLUDED ── -->
+<section>
+  <div class="section-inner">
+    <div class="section-tag">No Hidden Costs</div>
+    <h2>Compare the <em>real cost</em></h2>
+    <p class="section-sub">Other platforms charge monthly. You pay once and own everything.</p>
+
+    <div class="included-grid">
+      <div class="included-list">
+        <div class="included-item"><span class="check">✅</span><div class="included-text"><strong>Full source code</strong><span>Deploy anywhere, modify anything, own it forever</span></div></div>
+        <div class="included-item"><span class="check">✅</span><div class="included-text"><strong>Complete booking system</strong><span>No Acuity or Calendly subscription needed — saves $15–50/month</span></div></div>
+        <div class="included-item"><span class="check">✅</span><div class="included-text"><strong>Patient portal + intake forms</strong><span>Replaces dedicated patient management tools</span></div></div>
+        <div class="included-item"><span class="check">✅</span><div class="included-text"><strong>Visual admin panel</strong><span>Edit everything without touching code</span></div></div>
+        <div class="included-item"><span class="check">✅</span><div class="included-text"><strong>Email notifications (Resend)</strong><span>Free tier covers most practices (3,000 emails/month)</span></div></div>
+        <div class="included-item"><span class="check">✅</span><div class="included-text"><strong>Database + auth (Supabase)</strong><span>Free tier included — no database costs for most practices</span></div></div>
+        <div class="included-item"><span class="check">✅</span><div class="included-text"><strong>Hosting (Netlify)</strong><span>Free tier handles virtually all chiro practice traffic</span></div></div>
+        <div class="included-item"><span class="check">✅</span><div class="included-text"><strong>Setup guide + documentation</strong><span>Step-by-step instructions for every feature</span></div></div>
+      </div>
+
+      <div>
+        <div class="vs-box">
+          <h3>💸 vs. Typical Monthly Platforms</h3>
+          <div class="vs-row">
+            <span class="vs-label">Website platform</span>
+            <span class="vs-them">$100–200/mo</span>
+            <span class="vs-us">$0</span>
+          </div>
+          <div class="vs-row">
+            <span class="vs-label">Online booking</span>
+            <span class="vs-them">$15–50/mo</span>
+            <span class="vs-us">$0</span>
+          </div>
+          <div class="vs-row">
+            <span class="vs-label">Patient portal</span>
+            <span class="vs-them">$50–100/mo</span>
+            <span class="vs-us">$0</span>
+          </div>
+          <div class="vs-row">
+            <span class="vs-label">Email notifications</span>
+            <span class="vs-them">$20–40/mo</span>
+            <span class="vs-us">$0</span>
+          </div>
+          <div class="vs-row">
+            <span class="vs-label">Custom design</span>
+            <span class="vs-them">$3,000–10,000</span>
+            <span class="vs-us">Included</span>
+          </div>
+          <div class="pricing-divider"></div>
+          <div class="vs-row">
+            <span class="vs-label" style="font-weight:700;color:#ccc;">Year 1 total</span>
+            <span class="vs-them" style="font-size:15px;">$5,000–15,000+</span>
+            <span class="vs-us" style="font-size:15px;">$499</span>
+          </div>
+          <div class="vs-highlight">
+            <div class="big">Save $4,500+</div>
+            <div class="sub">in your first year alone</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── PRICING ── -->
+<section class="pricing-bg" id="pricing">
+  <div class="section-inner">
+    <div style="text-align: center; margin-bottom: 56px;">
+      <div class="section-tag">Simple Pricing</div>
+      <h2>One price.<br /><em>Everything included.</em></h2>
+      <p class="section-sub" style="margin: 0 auto;">No subscriptions. No upsells. No surprise fees. Pay once, use forever.</p>
+    </div>
+
+    <div class="pricing-wrap">
+      <div>
+        <div class="pricing-card">
+          <div class="pricing-badge">🚀 Launch Special</div>
+          <div class="pricing-name">ChiroTemplate — Single Site License</div>
+          <div class="pricing-was">Regular price: $797</div>
+          <div class="pricing-price-row">
+            <div class="pricing-price">$499</div>
+            <div class="pricing-period">one-time</div>
+          </div>
+          <div class="pricing-save">✓ You save $298 — Launch Special pricing</div>
+
+          <div class="pricing-divider"></div>
+
+          <div class="pricing-features">
+            <div class="pricing-feat"><span class="dot"></span>Complete website source code (React)</div>
+            <div class="pricing-feat"><span class="dot"></span>Online booking system — unlimited appointments</div>
+            <div class="pricing-feat"><span class="dot"></span>Patient portal + digital intake forms</div>
+            <div class="pricing-feat"><span class="dot"></span>Visual admin panel — no code required</div>
+            <div class="pricing-feat"><span class="dot"></span>Email + SMS notification system</div>
+            <div class="pricing-feat"><span class="dot"></span>Blog, bill pay, Google Calendar integration</div>
+            <div class="pricing-feat"><span class="dot"></span>Launch wizard — guided setup in 15 minutes</div>
+            <div class="pricing-feat"><span class="dot"></span>Deploy to Netlify — free hosting for most practices</div>
+            <div class="pricing-feat"><span class="dot"></span>Step-by-step setup guide included</div>
+            <div class="pricing-feat"><span class="dot"></span>Single site license — yours to keep forever</div>
+          </div>
+
+          <!-- REPLACE href with your Lemon Squeezy buy link -->
+          <a href="https://wellspringweb.lemonsqueezy.com/buy/REPLACE_WITH_PRODUCT_ID" class="btn-buy">
+            Get ChiroTemplate Now →
+          </a>
+          <div class="pricing-note">Secure checkout via Lemon Squeezy · Instant delivery · 30-day refund policy</div>
+        </div>
+
+        <div class="pricing-side">
+          <div class="side-item">
+            <div class="side-icon">⚡</div>
+            <div class="side-label">Instant delivery after purchase</div>
+          </div>
+          <div class="side-item">
+            <div class="side-icon">🔒</div>
+            <div class="side-label">Secure Lemon Squeezy checkout</div>
+          </div>
+          <div class="side-item">
+            <div class="side-icon">♻️</div>
+            <div class="side-label">30-day refund policy</div>
+          </div>
+          <div class="side-item">
+            <div class="side-icon">📖</div>
+            <div class="side-label">Full setup guide included</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── FAQ ── -->
+<section>
+  <div class="section-inner">
+    <div style="max-width: 700px; margin: 0 auto;">
+      <div class="section-tag">FAQ</div>
+      <h2>Common <em>questions</em></h2>
+
+      <div class="faq-list">
+        <details>
+          <summary>Do I need to know how to code?</summary>
+          <div class="faq-answer">No. The admin panel lets you change your logo, colors, services, hours, team bios, and all content without touching any code. For setup, you'll need accounts on Netlify (free) and Supabase (free) — both are beginner-friendly and fully documented in the included setup guide.</div>
+        </details>
+        <details>
+          <summary>What are the ongoing costs after I buy?</summary>
+          <div class="faq-answer">For most chiropractic practices, ongoing costs are $0/month. Netlify's free tier handles your hosting, Supabase's free tier handles your database and patient logins, and Resend's free tier covers up to 3,000 emails/month. You only pay if your traffic or email volume grows significantly.</div>
+        </details>
+        <details>
+          <summary>How long does setup take?</summary>
+          <div class="faq-answer">The built-in Launch Wizard walks you through practice name, contact info, brand colors, hours, and team — typically 10–15 minutes. Deploying to Netlify takes another 5 minutes. Full setup including integrations (Google Calendar, email, etc.) takes about an hour.</div>
+        </details>
+        <details>
+          <summary>Can I customize the design?</summary>
+          <div class="faq-answer">Yes — extensively. The admin panel controls colors, fonts, logo, layout sections, and content. Since you receive the full source code (React), a developer can customize anything further. There are no locked-down templates or proprietary platforms.</div>
+        </details>
+        <details>
+          <summary>What does "single site license" mean?</summary>
+          <div class="faq-answer">You can deploy ChiroTemplate to one domain (e.g., your practice website). The license key is tied to your site's domain. If you're a web developer building sites for multiple clients, please contact us about agency/multi-site licensing.</div>
+        </details>
+        <details>
+          <summary>Is there a demo I can try?</summary>
+          <div class="faq-answer">Yes — <a href="https://demo.wellspringweb.com" target="_blank">demo.wellspringweb.com</a> is a fully working demo. You can explore the public site, go through the booking flow, and see the patient portal. The admin panel is also accessible in the demo.</div>
+        </details>
+        <details>
+          <summary>What if I need help after purchase?</summary>
+          <div class="faq-answer">Every purchase includes a detailed setup guide covering all features and integrations. For additional support, WellSpring Digital offers setup and customization services — <a href="https://wellspringweb.com/contact" target="_blank">contact us</a>.</div>
+        </details>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── DEMO CTA ── -->
+<div class="demo-cta">
+  <div class="section-tag">See It In Action</div>
+  <h2>Try the live demo<br /><em>before you buy</em></h2>
+  <p class="section-sub">The demo is fully interactive — book a fake appointment, log in to the patient portal, explore the admin panel.</p>
+  <div class="demo-btns">
+    <a href="https://demo.wellspringweb.com" target="_blank" class="btn-hero-secondary" style="font-size:15px; padding:15px 28px;">▶ Open Live Demo</a>
+    <a href="#pricing" class="btn-hero-primary" style="font-size:15px; padding:15px 28px;">Get ChiroTemplate — $499 →</a>
+  </div>
+</div>
+
+<!-- ── FOOTER ── -->
+<footer>
+  <div class="footer-logo">
+    <div class="nav-logo-mark" style="width:28px;height:28px;font-size:14px;border-radius:6px;">⚕</div>
+    <span style="font-size:14px;font-weight:700;color:var(--gold);">ChiroTemplate</span>
+    <span style="font-size:13px;color:#555;">by WellSpring Digital</span>
+  </div>
+  <p class="footer-text">
+    © 2025 WellSpring Digital ·
+    <a href="https://wellspringweb.com">wellspringweb.com</a> ·
+    <a href="https://demo.wellspringweb.com" target="_blank">Live Demo</a> ·
+    <a href="https://wellspringweb.com/contact">Contact</a>
+  </p>
+</footer>
+
+</body>
+</html>
