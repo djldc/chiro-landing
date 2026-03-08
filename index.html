@@ -21,6 +21,12 @@
       --text: #f0ece4;
       --muted: #888;
       --green: #22c55e;
+      /* light theme */
+      --bg-light: #ffffff;
+      --bg-light2: #f7f6f3;
+      --text-dark: #1a1a1a;
+      --text-dark2: #4a4a4a;
+      --border-light: rgba(0,0,0,0.09);
     }
 
     html { scroll-behavior: smooth; }
@@ -60,8 +66,9 @@
     .hero {
       min-height: 92vh; display: flex; align-items: center;
       padding: 80px 24px 60px;
-      background: radial-gradient(ellipse 70% 60% at 60% 40%, rgba(201,168,76,0.06) 0%, transparent 70%),
-                  radial-gradient(ellipse 50% 50% at 10% 80%, rgba(26,74,110,0.12) 0%, transparent 60%);
+      background: radial-gradient(ellipse 70% 60% at 60% 40%, rgba(201,168,76,0.09) 0%, transparent 70%),
+                  radial-gradient(ellipse 50% 50% at 10% 80%, rgba(26,74,110,0.05) 0%, transparent 60%),
+                  var(--bg-light);
     }
     .hero-inner { max-width: 1160px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; }
     .hero-badge {
@@ -78,8 +85,8 @@
       margin-bottom: 20px; letter-spacing: -0.02em;
     }
     .hero h1 em { font-style: italic; color: var(--gold); }
-    .hero-sub { font-size: 18px; color: #aaa; line-height: 1.7; margin-bottom: 36px; max-width: 480px; }
-    .hero-sub strong { color: var(--text); }
+    .hero-sub { font-size: 18px; color: #555; line-height: 1.7; margin-bottom: 36px; max-width: 480px; }
+    .hero-sub strong { color: var(--text-dark); }
     .hero-cta { display: flex; gap: 12px; flex-wrap: wrap; align-items: center; margin-bottom: 48px; }
     .btn-hero-primary {
       display: inline-flex; align-items: center; gap: 8px;
@@ -90,11 +97,11 @@
     .btn-hero-primary:hover { background: var(--gold-light); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(201,168,76,0.3); }
     .btn-hero-secondary {
       display: inline-flex; align-items: center; gap: 8px;
-      padding: 15px 28px; border: 1.5px solid var(--border); border-radius: 10px;
-      font-size: 15px; font-weight: 600; color: var(--text);
+      padding: 15px 28px; border: 1.5px solid rgba(0,0,0,0.18); border-radius: 10px;
+      font-size: 15px; font-weight: 600; color: var(--text-dark2);
       transition: all 0.2s; background: none; cursor: pointer;
     }
-    .btn-hero-secondary:hover { border-color: rgba(255,255,255,0.25); background: rgba(255,255,255,0.04); }
+    .btn-hero-secondary:hover { border-color: rgba(0,0,0,0.35); background: rgba(0,0,0,0.04); }
     .hero-proof { display: flex; gap: 32px; }
     .proof-num { font-size: 24px; font-weight: 800; color: var(--gold); }
     .proof-label { font-size: 12px; color: var(--muted); margin-top: 2px; }
@@ -153,7 +160,7 @@
     .badge-icon { font-size: 16px; }
 
     /* ── TRUST ── */
-    .trust { padding: 32px 24px; border-bottom: 1px solid var(--border); }
+    .trust { padding: 32px 24px; border-bottom: 1px solid var(--border-light); background: var(--bg-light2); }
     .trust-inner { max-width: 1160px; margin: 0 auto; text-align: center; }
     .trust p { font-size: 12px; color: var(--muted); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 20px; }
     .trust-logos { display: flex; justify-content: center; align-items: center; gap: 40px; flex-wrap: wrap; }
@@ -176,17 +183,17 @@
     .section-sub { font-size: 17px; color: #888; line-height: 1.7; max-width: 560px; }
 
     /* ── FEATURES ── */
-    .features-bg { background: var(--bg2); }
+    .features-bg { background: var(--bg-light2); }
     .features-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; margin-top: 56px; }
-    .feature-card { background: var(--bg3); padding: 32px 28px; border: 1px solid var(--border); transition: border-color 0.2s; }
-    .feature-card:hover { border-color: rgba(201,168,76,0.3); }
+    .feature-card { background: var(--bg-light); padding: 32px 28px; border: 1px solid var(--border-light); transition: border-color 0.2s; }
+    .feature-card:hover { border-color: rgba(201,168,76,0.4); }
     .feature-icon { font-size: 28px; margin-bottom: 16px; }
-    .feature-title { font-size: 16px; font-weight: 700; margin-bottom: 8px; color: var(--text); }
-    .feature-desc { font-size: 14px; color: #777; line-height: 1.65; }
+    .feature-title { font-size: 16px; font-weight: 700; margin-bottom: 8px; color: var(--text-dark); }
+    .feature-desc { font-size: 14px; color: #666; line-height: 1.65; }
     .feature-tag { display: inline-block; margin-top: 12px; padding: 3px 10px; background: rgba(34,197,94,0.1); border-radius: 100px; font-size: 10px; font-weight: 700; color: var(--green); letter-spacing: 0.3px; }
 
     /* ── HOW IT WORKS ── */
-    .how-it-works-bg { background: var(--bg); }
+    .how-it-works-bg { background: var(--bg-light); }
     .steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; margin-top: 56px; position: relative; }
     .steps::before {
       content: ""; position: absolute; top: 32px; left: calc(16.66% + 16px); right: calc(16.66% + 16px);
@@ -235,19 +242,21 @@
     .comp-cta-box .sub { font-size: 12px; color: #888; margin-top: 2px; }
 
     /* ── PRICING ── */
-    .pricing-bg { background: var(--bg); }
+    .pricing-bg { background: var(--bg-light2); }
     .pricing-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 56px; max-width: 1200px; margin-left: auto; margin-right: auto; }
 
     /* Template Only card */
     .pricing-card-standard {
-      background: var(--bg3); border: 1px solid var(--border); border-radius: 20px;
-      padding: 36px; position: relative; overflow: hidden;
+      border: 1px solid var(--border-light); border-radius: 20px;
+      padding: 0; position: relative; overflow: hidden;
+      display: flex; flex-direction: column;
     }
 
     /* Guided Setup card */
     .pricing-card-guided {
-      background: var(--bg3); border: 1px solid rgba(100,160,220,0.3); border-radius: 20px;
-      padding: 36px; position: relative; overflow: hidden;
+      border: 1px solid rgba(100,160,220,0.4); border-radius: 20px;
+      padding: 0; position: relative; overflow: hidden;
+      display: flex; flex-direction: column;
     }
     .pricing-card-guided::before {
       content: ""; position: absolute; top: 0; left: 0; right: 0; height: 3px;
@@ -256,8 +265,9 @@
 
     /* Done For You card — Featured */
     .pricing-card-featured {
-      background: var(--bg3); border: 2px solid rgba(201,168,76,0.5); border-radius: 20px;
-      padding: 36px; position: relative; overflow: hidden;
+      border: 2px solid rgba(201,168,76,0.6); border-radius: 20px;
+      padding: 0; position: relative; overflow: hidden;
+      display: flex; flex-direction: column;
     }
     .pricing-card-featured::before {
       content: ""; position: absolute; top: 0; left: 0; right: 0; height: 3px;
@@ -341,7 +351,7 @@
     .tier-shared-note strong { color: #666; }
 
     /* ── FAQ ── */
-    .faq-bg { background: var(--bg2); }
+    .faq-bg { background: var(--bg-light); }
     .faq-list { margin-top: 48px; display: flex; flex-direction: column; gap: 2px; }
     details {
       background: var(--bg3); border: 1px solid var(--border); border-radius: 12px;
@@ -401,6 +411,69 @@
       .pricing-card-featured, .pricing-card-guided, .pricing-card-standard { padding: 28px 20px; }
       .hero-proof { gap: 20px; }
       .comp-table th:nth-child(2), .comp-table td:nth-child(2) { display: none; }
+    }
+
+    /* ── LIGHT SECTION TEXT ── */
+    .hero, .trust, .features-bg, .how-it-works-bg, .pricing-bg, .faq-bg { color: var(--text-dark); }
+    .hero h1 { color: var(--text-dark); }
+    .proof-label { color: #666; }
+    .trust p { color: #888; }
+    .trust-logo { color: #999; }
+    .features-bg .section-sub, .how-it-works-bg .section-sub,
+    .pricing-bg .section-sub, .faq-bg .section-sub { color: var(--text-dark2); }
+    .how-it-works-bg .step-title { color: var(--text-dark); }
+    .how-it-works-bg .step-desc { color: #666; }
+    .how-it-works-bg .step-num { background: var(--gold-dim); border-color: rgba(201,168,76,0.35); }
+
+    /* FAQ light overrides */
+    .faq-bg details { background: var(--bg-light); border-color: var(--border-light); }
+    .faq-bg details:hover { border-color: rgba(0,0,0,0.18); }
+    .faq-bg details[open] { border-color: rgba(201,168,76,0.45); }
+    .faq-bg summary { color: var(--text-dark); }
+    .faq-bg .faq-answer { color: var(--text-dark2); }
+    .faq-bg .faq-answer a { color: var(--gold); }
+
+    /* Tier breakdown on light bg */
+    .pricing-bg .tier-breakdown { border-top-color: var(--border-light); }
+    .pricing-bg .tier-breakdown-title { color: var(--text-dark); }
+    .pricing-bg .tier-breakdown-sub { color: var(--text-dark2); }
+    .pricing-bg .tier-col-name { color: var(--text-dark); }
+    .pricing-bg .tier-item.yes { color: var(--text-dark2); }
+    .pricing-bg .tier-section-label { color: #999; }
+    .pricing-bg .tier-shared { background: rgba(0,0,0,0.03); border-color: var(--border-light); }
+    .pricing-bg .tier-shared-note { color: var(--text-dark2); }
+    .pricing-bg .tier-shared-note strong { color: var(--text-dark); }
+
+    /* ── PRICING CARD HYBRID (dark top / light bottom) ── */
+    .card-top {
+      padding: 32px 32px 24px;
+      background: var(--bg3);
+      color: var(--text);
+    }
+    .card-top .pricing-tagline { color: #888; }
+    .card-top .price-was { color: #666; }
+    .card-top .price-was s { color: #555; }
+
+    .card-bottom {
+      padding: 24px 32px 32px;
+      background: var(--bg-light);
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      border-top: 1px solid var(--border-light);
+    }
+    .card-bottom .pricing-features { flex: 1; margin-bottom: 20px; }
+    .card-bottom .pricing-feat { color: var(--text-dark2); }
+    .card-bottom .feat-dot-dim { background: #c8c8c8; }
+    .card-bottom .pricing-note { color: #999; }
+    .card-bottom .pricing-note a { color: var(--text-dark2); text-decoration: underline; }
+
+    /* DFY toggle on white */
+    .card-bottom .dfy-toggle button {
+      border-color: rgba(0,0,0,0.12); color: #777; background: transparent;
+    }
+    .card-bottom .dfy-toggle button.dfy-active {
+      background: var(--gold-dim); border-color: var(--gold); color: #7a5c10;
     }
 
     /* ── Stripe Buy Button sizing ── */
@@ -759,103 +832,99 @@
 
       <!-- CARD 1: Template Only -->
       <div class="pricing-card-standard">
-        <div class="pricing-pill pill-outline">For Developers</div>
-        <div style="margin-bottom: 20px;"></div>
-        <div class="pricing-name">Template Only</div>
-        <div class="pricing-tagline">Full source code, yours forever. Deploy to Netlify + Supabase yourself using our detailed setup guide.</div>
-
-        <div class="price-row">
-          <div class="price-amount" style="color:var(--text);">$999</div>
-          <div class="price-period">one-time</div>
+        <div class="card-top">
+          <div class="pricing-pill pill-outline">For Developers</div>
+          <div style="margin-bottom: 20px;"></div>
+          <div class="pricing-name">Template Only</div>
+          <div class="pricing-tagline">Full source code, yours forever. Deploy to Netlify + Supabase yourself using our detailed setup guide.</div>
+          <div class="price-row">
+            <div class="price-amount" style="color:var(--gold);">$999</div>
+            <div class="price-period">one-time</div>
+          </div>
+          <div class="price-was" style="color:transparent;">—</div>
         </div>
-        <div class="price-was" style="color:transparent;">—</div>
-
-        <div class="pricing-divider"></div>
-
-        <div class="pricing-features">
-          <div class="pricing-feat"><span class="feat-dot"></span>Complete React + Supabase source code</div>
-          <div class="pricing-feat"><span class="feat-dot"></span>Step-by-step setup guide (all integrations)</div>
-          <div class="pricing-feat"><span class="feat-dot"></span>Booking, patient portal, admin panel</div>
-          <div class="pricing-feat"><span class="feat-dot"></span>Email, SMS, Stripe, Google Calendar</div>
-          <div class="pricing-feat"><span class="feat-dot"></span>Single-site license — own it forever</div>
-          <div class="pricing-feat"><span class="feat-dot feat-dot-dim"></span><span style="color:#555;">You deploy and maintain it yourself</span></div>
-          <div class="pricing-feat"><span class="feat-dot feat-dot-dim"></span><span style="color:#555;">No setup assistance included</span></div>
-          <div class="pricing-feat"><span class="feat-dot feat-dot-dim"></span><span style="color:#555;">Updates sold separately ($249/yr)</span></div>
-        </div>
-
-        <stripe-buy-button
-          buy-button-id="buy_btn_1T8jqRCcZ6FUck3ifiH2k2tG"
-          publishable-key="pk_live_51T6bU3CcZ6FUck3ibsS6E8248RB8gsl7jS7G9Em7PUduV5WJD6vOP9TuQbxDFWp3Hh6xLGfbvawX1zGBvEdQ0XJR00ePhUuEBq"
-        ></stripe-buy-button>
-        <div class="pricing-note">
-          Secure checkout via Stripe · Instant code delivery<br />
-          Want updates? Add the <a href="#faq">Annual Update Subscription ($249/yr)</a>.
+        <div class="card-bottom">
+          <div class="pricing-features">
+            <div class="pricing-feat"><span class="feat-dot"></span>Complete React + Supabase source code</div>
+            <div class="pricing-feat"><span class="feat-dot"></span>Step-by-step setup guide (all integrations)</div>
+            <div class="pricing-feat"><span class="feat-dot"></span>Booking, patient portal, admin panel</div>
+            <div class="pricing-feat"><span class="feat-dot"></span>Email, SMS, Stripe, Google Calendar</div>
+            <div class="pricing-feat"><span class="feat-dot"></span>Single-site license — own it forever</div>
+            <div class="pricing-feat"><span class="feat-dot feat-dot-dim"></span><span style="color:#aaa;">You deploy and maintain it yourself</span></div>
+            <div class="pricing-feat"><span class="feat-dot feat-dot-dim"></span><span style="color:#aaa;">No setup assistance included</span></div>
+            <div class="pricing-feat"><span class="feat-dot feat-dot-dim"></span><span style="color:#aaa;">Updates sold separately ($249/yr)</span></div>
+          </div>
+          <stripe-buy-button
+            buy-button-id="buy_btn_1T8jqRCcZ6FUck3ifiH2k2tG"
+            publishable-key="pk_live_51T6bU3CcZ6FUck3ibsS6E8248RB8gsl7jS7G9Em7PUduV5WJD6vOP9TuQbxDFWp3Hh6xLGfbvawX1zGBvEdQ0XJR00ePhUuEBq"
+          ></stripe-buy-button>
+          <div class="pricing-note">
+            Secure checkout via Stripe · Instant code delivery<br />
+            Want updates? Add the <a href="#faq">Annual Update Subscription ($249/yr)</a>.
+          </div>
         </div>
       </div>
 
       <!-- CARD 2: Guided Setup -->
       <div class="pricing-card-guided">
-        <div class="pricing-pill pill-blue">Launch With Us</div>
-        <div style="margin-bottom: 20px;"></div>
-        <div class="pricing-name">Guided Setup</div>
-        <div class="pricing-tagline">We set everything up with you over 3 Zoom sessions. You own it completely — no monthly fees ever.</div>
-
-        <div class="price-row">
-          <div class="price-amount" style="color:#7ec8e3;">$2,499</div>
-          <div class="price-period">one-time</div>
+        <div class="card-top">
+          <div class="pricing-pill pill-blue">Launch With Us</div>
+          <div style="margin-bottom: 20px;"></div>
+          <div class="pricing-name">Guided Setup</div>
+          <div class="pricing-tagline">We set everything up with you over 3 Zoom sessions. You own it completely — no monthly fees ever.</div>
+          <div class="price-row">
+            <div class="price-amount" style="color:#7ec8e3;">$2,499</div>
+            <div class="price-period">one-time</div>
+          </div>
+          <div class="price-was" style="color:transparent;">—</div>
         </div>
-        <div class="price-was" style="color:transparent;">—</div>
-
-        <div class="pricing-divider"></div>
-
-        <div class="pricing-features">
-          <div class="pricing-feat"><span class="feat-dot" style="background:#7ec8e3;"></span>Everything in Template Only</div>
-          <div class="pricing-feat"><span class="feat-dot" style="background:#7ec8e3;"></span>3 live Zoom sessions — we set it up together</div>
-          <div class="pricing-feat"><span class="feat-dot" style="background:#7ec8e3;"></span>Netlify + Supabase deployed on your accounts</div>
-          <div class="pricing-feat"><span class="feat-dot" style="background:#7ec8e3;"></span>All integrations configured on screen</div>
-          <div class="pricing-feat"><span class="feat-dot" style="background:#7ec8e3;"></span>90-day email support after launch</div>
-          <div class="pricing-feat"><span class="feat-dot" style="background:#7ec8e3;"></span>12 months of code updates included</div>
-          <div class="pricing-feat"><span class="feat-dot feat-dot-dim"></span><span style="color:#555;">You host and maintain it after launch</span></div>
-          <div class="pricing-feat"><span class="feat-dot feat-dot-dim"></span><span style="color:#555;">No ongoing maintenance included</span></div>
-        </div>
-
-        <stripe-buy-button
-          buy-button-id="buy_btn_1T8juuCcZ6FUck3iN4CiSQx2"
-          publishable-key="pk_live_51T6bU3CcZ6FUck3ibsS6E8248RB8gsl7jS7G9Em7PUduV5WJD6vOP9TuQbxDFWp3Hh6xLGfbvawX1zGBvEdQ0XJR00ePhUuEBq"
-        ></stripe-buy-button>
-        <div class="pricing-note">
-          Secure checkout via Stripe · Sessions scheduled after purchase<br />
-          Questions first? <a href="https://wellspringweb.com/contact">Contact us</a> before buying.
+        <div class="card-bottom">
+          <div class="pricing-features">
+            <div class="pricing-feat"><span class="feat-dot" style="background:#7ec8e3;"></span>Everything in Template Only</div>
+            <div class="pricing-feat"><span class="feat-dot" style="background:#7ec8e3;"></span>3 live Zoom sessions — we set it up together</div>
+            <div class="pricing-feat"><span class="feat-dot" style="background:#7ec8e3;"></span>Netlify + Supabase deployed on your accounts</div>
+            <div class="pricing-feat"><span class="feat-dot" style="background:#7ec8e3;"></span>All integrations configured on screen</div>
+            <div class="pricing-feat"><span class="feat-dot" style="background:#7ec8e3;"></span>90-day email support after launch</div>
+            <div class="pricing-feat"><span class="feat-dot" style="background:#7ec8e3;"></span>12 months of code updates included</div>
+            <div class="pricing-feat"><span class="feat-dot feat-dot-dim"></span><span style="color:#aaa;">You host and maintain it after launch</span></div>
+            <div class="pricing-feat"><span class="feat-dot feat-dot-dim"></span><span style="color:#aaa;">No ongoing maintenance included</span></div>
+          </div>
+          <stripe-buy-button
+            buy-button-id="buy_btn_1T8juuCcZ6FUck3iN4CiSQx2"
+            publishable-key="pk_live_51T6bU3CcZ6FUck3ibsS6E8248RB8gsl7jS7G9Em7PUduV5WJD6vOP9TuQbxDFWp3Hh6xLGfbvawX1zGBvEdQ0XJR00ePhUuEBq"
+          ></stripe-buy-button>
+          <div class="pricing-note">
+            Secure checkout via Stripe · Sessions scheduled after purchase<br />
+            Questions first? <a href="https://wellspringweb.com/contact">Contact us</a> before buying.
+          </div>
         </div>
       </div>
 
       <!-- CARD 3: Done For You -->
       <div class="pricing-card-featured">
-        <div class="pricing-pill pill-gold">Most Popular</div>
-        <div style="margin-bottom: 4px;"></div>
-        <div class="promo-strip">✦ Limited Time — Setup Fee Waived</div>
-        <div class="pricing-name">Done For You</div>
-        <div class="pricing-tagline">We deploy, configure, and manage your entire site. You focus on patients — we handle everything else.</div>
-
-        <div class="price-row">
-          <div class="price-amount">$349</div>
-          <div class="price-period">/month</div>
+        <div class="card-top">
+          <div class="pricing-pill pill-gold">Most Popular</div>
+          <div style="margin-bottom: 4px;"></div>
+          <div class="promo-strip">✦ Limited Time — Setup Fee Waived</div>
+          <div class="pricing-name">Done For You</div>
+          <div class="pricing-tagline">We deploy, configure, and manage your entire site. You focus on patients — we handle everything else.</div>
+          <div class="price-row">
+            <div class="price-amount">$349</div>
+            <div class="price-period">/month</div>
+          </div>
+          <div class="price-was">Setup fee: <s>$399</s> — <span style="color:var(--green);font-weight:700;">Waived right now</span></div>
         </div>
-        <div class="price-was">Setup fee: <s>$399</s> — <span style="color:var(--green);font-weight:700;">Waived right now</span></div>
-
-        <div class="pricing-divider"></div>
-
-        <div class="pricing-features">
-          <div class="pricing-feat"><span class="feat-dot"></span>We deploy your site — done for you</div>
-          <div class="pricing-feat"><span class="feat-dot"></span>Supabase database configured and secured</div>
-          <div class="pricing-feat"><span class="feat-dot"></span>Stripe payments connected and tested</div>
-          <div class="pricing-feat"><span class="feat-dot"></span>Email + SMS notifications configured</div>
-          <div class="pricing-feat"><span class="feat-dot"></span>Ongoing hosting, updates &amp; maintenance</div>
-          <div class="pricing-feat"><span class="feat-dot"></span>Priority email support</div>
-          <div class="pricing-feat"><span class="feat-dot"></span>Template license included</div>
-          <div class="pricing-feat"><span class="feat-dot"></span>Cancel anytime — no long-term contract</div>
-        </div>
-
+        <div class="card-bottom">
+          <div class="pricing-features">
+            <div class="pricing-feat"><span class="feat-dot"></span>We deploy your site — done for you</div>
+            <div class="pricing-feat"><span class="feat-dot"></span>Supabase database configured and secured</div>
+            <div class="pricing-feat"><span class="feat-dot"></span>Stripe payments connected and tested</div>
+            <div class="pricing-feat"><span class="feat-dot"></span>Email + SMS notifications configured</div>
+            <div class="pricing-feat"><span class="feat-dot"></span>Ongoing hosting, updates &amp; maintenance</div>
+            <div class="pricing-feat"><span class="feat-dot"></span>Priority email support</div>
+            <div class="pricing-feat"><span class="feat-dot"></span>Template license included</div>
+            <div class="pricing-feat"><span class="feat-dot"></span>Cancel anytime — no long-term contract</div>
+          </div>
         <div class="dfy-toggle">
           <button id="dfy-btn-monthly" class="dfy-active" onclick="dfySwitch('monthly')">Monthly — $349/mo</button>
           <button id="dfy-btn-yearly" onclick="dfySwitch('yearly')">Annual — Pay yearly</button>
@@ -880,11 +949,12 @@
             document.getElementById('dfy-btn-yearly').className  = mode === 'yearly'  ? 'dfy-active' : '';
           }
         </script>
-        <div class="pricing-note">
-          Secure checkout via Stripe · Cancel anytime<br />
-          <a href="#faq">Cancel within 12 months?</a> A $999 license fee applies to keep your site.
-        </div>
-      </div>
+          <div class="pricing-note">
+            Secure checkout via Stripe · Cancel anytime<br />
+            <a href="#faq">Cancel within 12 months?</a> A $999 license fee applies to keep your site.
+          </div>
+        </div><!-- /card-bottom -->
+      </div><!-- /pricing-card-featured -->
 
     </div>
 
