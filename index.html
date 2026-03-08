@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>ChiroTemplate — Professional Chiropractic Website, Done For You</title>
-  <meta name="description" content="A complete chiropractic website with online booking, patient portal, and payments — built for chiropractors. Three plans: DIY template $999, Guided Setup $2,499, or Done-For-You managed at $349/month." />
+  <meta name="description" content="A complete chiropractic website with online booking, patient portal, and payments — built for chiropractors. Three plans: Template Only $1,299, Guided Setup $2,499, or Done-For-You managed at $349/month." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,700;1,700&display=swap" rel="stylesheet" />
   <style>
@@ -211,7 +211,9 @@
     .step-desc { font-size: 14px; color: #777; line-height: 1.7; }
 
     /* ── COMPARISON ── */
-    .comparison-bg { background: var(--bg2); }
+    .comparison-bg { background: #0f1115; }
+    .comp-table td:nth-child(3),
+    .comp-table th:nth-child(3) { background: rgba(201,168,76,0.05); border-left: 1px solid rgba(201,168,76,0.15); }
     .comparison-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; margin-top: 56px; align-items: start; }
     .comp-table { width: 100%; border-collapse: collapse; }
     .comp-table th { text-align: left; font-size: 11px; text-transform: uppercase; letter-spacing: 1px; color: #555; padding: 0 16px 14px; }
@@ -722,8 +724,9 @@
 <section class="comparison-bg">
   <div class="section-inner">
     <div class="section-tag">How We Compare</div>
-    <h2>More features.<br /><em>Lower price.</em></h2>
-    <p class="section-sub">To get a patient portal from OnlineChiro.com you pay $466/month. ChiroTemplate's Done-For-You plan includes it — and much more — at $349/month.</p>
+    <h2>One platform.<br /><em>Everything included.</em></h2>
+    <p class="section-sub">Most chiropractors pay separately for scheduling, a patient portal, and SMS reminders. ChiroTemplate consolidates all of it — at a lower monthly cost than a single competitor tool.</p>
+    <p style="font-size:13px;color:var(--gold);margin-top:12px;font-style:italic;">Built specifically for chiropractic practices — not a generic health template.</p>
 
     <div class="comparison-grid">
       <div>
@@ -759,22 +762,27 @@
             <tr>
               <td>Online booking system</td>
               <td class="comp-them">Scheduling widget only</td>
-              <td class="comp-us">Full built-in system</td>
+              <td class="comp-us">Integrated scheduling system</td>
             </tr>
             <tr>
               <td>SMS appointment reminders</td>
-              <td class="comp-them">Not included</td>
+              <td class="comp-them">Requires third-party integration</td>
               <td class="comp-us">Included</td>
             </tr>
             <tr>
               <td>Staff portal</td>
-              <td class="comp-them">Not available</td>
+              <td class="comp-them">Requires third-party integration</td>
               <td class="comp-us">Included</td>
             </tr>
             <tr>
-              <td>iMatrix pricing</td>
-              <td class="comp-them">Call for a quote</td>
-              <td class="comp-us">$349/mo — transparent</td>
+              <td>HIPAA-ready infrastructure</td>
+              <td class="comp-them">Not disclosed</td>
+              <td class="comp-us">Included (Supabase + RLS)</td>
+            </tr>
+            <tr>
+              <td>Transparent pricing</td>
+              <td class="comp-them">Contact for quote</td>
+              <td class="comp-us">$349/mo — published</td>
             </tr>
             <tr class="comp-highlight-row">
               <td style="font-weight:700;color:#ccc;">To get a patient portal</td>
@@ -783,12 +791,12 @@
             </tr>
           </tbody>
         </table>
-        <p style="font-size:11px;color:#555;margin-top:12px;">✦ Setup fee waiver is a limited-time offer. Pricing sourced from onlinechiro.com/packages-and-pricing.</p>
+        <p style="font-size:11px;color:#555;margin-top:12px;">✦ Setup fee waiver is a limited-time offer. Pricing comparison based on publicly listed OnlineChiro.com pricing as of 2026 (onlinechiro.com/packages-and-pricing). Competitor features based on published plan descriptions.</p>
       </div>
 
       <div>
         <div class="comp-summary">
-          <h3>You save $117/month vs. OnlineChiro</h3>
+          <h3>Average clinic savings vs. OnlineChiro</h3>
           <div class="comp-row">
             <span class="comp-label">OnlineChiro (w/ portal)</span>
             <span class="comp-val-bad">$466/mo</span>
@@ -810,8 +818,8 @@
             <span class="comp-val-bad">Won't publish — call required</span>
           </div>
           <div class="comp-cta-box">
-            <div class="big">Save $1,400+/yr</div>
-            <div class="sub">vs. OnlineChiro with equivalent features</div>
+            <div class="big">$1,400+/year</div>
+            <div class="sub">Average clinic savings vs. OnlineChiro equivalent</div>
           </div>
         </div>
       </div>
@@ -838,7 +846,7 @@
           <div class="pricing-name">Template Only</div>
           <div class="pricing-tagline">Full source code, yours forever. Deploy to Netlify + Supabase yourself using our detailed setup guide.</div>
           <div class="price-row">
-            <div class="price-amount" style="color:var(--gold);">$999</div>
+            <div class="price-amount" style="color:var(--gold);">$1,299</div>
             <div class="price-period">one-time</div>
           </div>
           <div class="price-was" style="color:transparent;">—</div>
@@ -951,7 +959,7 @@
         </script>
           <div class="pricing-note">
             Secure checkout via Stripe · Cancel anytime<br />
-            <a href="#faq">Cancel within 12 months?</a> A $999 license fee applies to keep your site.
+            <a href="#faq">Cancel within 12 months?</a> A $1,299 license fee applies to keep your site.
           </div>
         </div><!-- /card-bottom -->
       </div><!-- /pricing-card-featured -->
@@ -967,7 +975,7 @@
 
         <!-- Template Only -->
         <div class="tier-col">
-          <div class="tier-col-name">Template Only — $999 one-time</div>
+          <div class="tier-col-name">Template Only — $1,299 one-time</div>
           <div class="tier-section">
             <div class="tier-section-label">Included</div>
             <div class="tier-item yes"><span class="ti-check">✓</span>Complete React + Supabase source code</div>
@@ -1060,7 +1068,7 @@
         <details>
           <summary>What's the difference between the three plans?</summary>
           <div class="faq-answer">
-            <strong>Template Only ($999 one-time)</strong> — You get the full source code and set it up yourself using our detailed guide. Best for developers or tech-savvy owners who want full control and zero ongoing fees.<br /><br />
+            <strong>Template Only ($1,299 one-time)</strong> — You get the full source code and set it up yourself using our detailed guide. Best for developers or tech-savvy owners who want full control and zero ongoing fees.<br /><br />
             <strong>Guided Setup ($2,499 one-time)</strong> — We set everything up together across 3 live Zoom sessions. You walk away owning the site on your own accounts, with 90 days of email support and 12 months of updates included. No monthly fees ever.<br /><br />
             <strong>Done For You ($349/month)</strong> — We handle everything: deployment, configuration, hosting oversight, updates, and ongoing support. You just fill out a short intake form and your site is live in under 48 hours.
           </div>
@@ -1071,11 +1079,11 @@
         </details>
         <details>
           <summary>What happens if I cancel the Done For You plan?</summary>
-          <div class="faq-answer">You can cancel anytime — there's no long-term contract. If you cancel <strong>within your first 12 months</strong> and want to keep your site running on your own hosting, a one-time $999 template license fee applies. After 12 months, you can take full ownership of your site files at no additional charge.</div>
+          <div class="faq-answer">You can cancel anytime — there's no long-term contract. If you cancel <strong>within your first 12 months</strong> and want to keep your site running on your own hosting, a one-time $1,299 template license fee applies. After 12 months, you can take full ownership of your site files at no additional charge.</div>
         </details>
         <details>
           <summary>Can I upgrade from Template Only to Done For You later?</summary>
-          <div class="faq-answer">Yes. If you buy the Template Only license and later decide you'd prefer managed hosting, we can transition you to the Done For You plan. We'll credit the $999 you paid toward your first few months. <a href="https://wellspringweb.com/contact">Contact us</a> to discuss.</div>
+          <div class="faq-answer">Yes. If you buy the Template Only license and later decide you'd prefer managed hosting, we can transition you to the Done For You plan. We'll credit the $1,299 you paid toward your first few months. <a href="https://wellspringweb.com/contact">Contact us</a> to discuss.</div>
         </details>
         <details>
           <summary>What is the Annual Update Subscription for?</summary>
