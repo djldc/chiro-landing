@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>ChiroTemplate — Complete Chiropractic Website Template</title>
-  <meta name="description" content="Launch a professional chiropractic website in minutes. Built-in online booking, patient portal, admin panel, email notifications and more. One-time payment, no monthly fees." />
+  <title>ChiroTemplate — Professional Chiropractic Website, Done For You</title>
+  <meta name="description" content="A complete chiropractic website with online booking, patient portal, and payments — built for chiropractors. Three plans: DIY template $999, Guided Setup $2,499, or Done-For-You managed at $349/month." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,700;1,700&display=swap" rel="stylesheet" />
   <style>
@@ -25,7 +25,6 @@
 
     html { scroll-behavior: smooth; }
     body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; }
-
     a { color: inherit; text-decoration: none; }
 
     /* ── NAV ── */
@@ -40,8 +39,7 @@
     .nav-logo-mark {
       width: 36px; height: 36px; border-radius: 8px;
       background: linear-gradient(135deg, #1a4a6e, #2d8a6e);
-      display: flex; align-items: center; justify-content: center;
-      font-size: 18px;
+      display: flex; align-items: center; justify-content: center; font-size: 18px;
     }
     .nav-brand { font-weight: 700; font-size: 15px; color: var(--gold); }
     .nav-brand span { color: var(--text); font-weight: 400; }
@@ -54,8 +52,7 @@
     .btn-ghost:hover { color: var(--text); border-color: rgba(255,255,255,0.2); }
     .btn-gold {
       padding: 10px 20px; background: var(--gold); border: none; border-radius: 8px;
-      font-size: 13px; font-weight: 700; color: #0e0e0e; cursor: pointer;
-      transition: all 0.2s;
+      font-size: 13px; font-weight: 700; color: #0e0e0e; cursor: pointer; transition: all 0.2s;
     }
     .btn-gold:hover { background: var(--gold-light); transform: translateY(-1px); }
 
@@ -77,7 +74,7 @@
     @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.4} }
     .hero h1 {
       font-family: 'Playfair Display', Georgia, serif;
-      font-size: clamp(40px, 5vw, 62px); font-weight: 700; line-height: 1.1;
+      font-size: clamp(38px, 5vw, 60px); font-weight: 700; line-height: 1.1;
       margin-bottom: 20px; letter-spacing: -0.02em;
     }
     .hero h1 em { font-style: italic; color: var(--gold); }
@@ -99,7 +96,6 @@
     }
     .btn-hero-secondary:hover { border-color: rgba(255,255,255,0.25); background: rgba(255,255,255,0.04); }
     .hero-proof { display: flex; gap: 32px; }
-    .proof-item { }
     .proof-num { font-size: 24px; font-weight: 800; color: var(--gold); }
     .proof-label { font-size: 12px; color: var(--muted); margin-top: 2px; }
 
@@ -122,21 +118,9 @@
     .browser-dots span:nth-child(1) { background: #ff5f57; }
     .browser-dots span:nth-child(2) { background: #febc2e; }
     .browser-dots span:nth-child(3) { background: #28c840; }
-    .browser-url {
-      flex: 1; background: #1c1c1e; border-radius: 6px; padding: 4px 12px;
-      font-size: 11px; color: #666; text-align: center;
-    }
-    .browser-content { position: relative; }
-    .browser-content img { width: 100%; display: block; }
-    .mockup-screen {
-      background: linear-gradient(160deg, #0f1f2e 0%, #0e1a14 100%);
-      padding: 20px;
-      min-height: 360px;
-    }
-    .mockup-header {
-      background: rgba(255,255,255,0.04); border-radius: 8px; padding: 10px 14px;
-      display: flex; align-items: center; justify-content: space-between; margin-bottom: 16px;
-    }
+    .browser-url { flex: 1; background: #1c1c1e; border-radius: 6px; padding: 4px 12px; font-size: 11px; color: #666; text-align: center; }
+    .mockup-screen { background: linear-gradient(160deg, #0f1f2e 0%, #0e1a14 100%); padding: 20px; min-height: 360px; }
+    .mockup-header { background: rgba(255,255,255,0.04); border-radius: 8px; padding: 10px 14px; display: flex; align-items: center; justify-content: space-between; margin-bottom: 16px; }
     .mockup-logo-row { display: flex; align-items: center; gap: 8px; }
     .mockup-logo-dot { width: 28px; height: 28px; border-radius: 6px; background: linear-gradient(135deg, #1a4a6e, #2d8a6e); display: flex; align-items: center; justify-content: center; font-size: 14px; }
     .mockup-brand { font-size: 11px; font-weight: 700; color: #7ec8e3; }
@@ -158,8 +142,6 @@
     .mockup-card-title { font-size: 8px; font-weight: 700; color: #ddd; margin-bottom: 4px; }
     .mockup-card-line { height: 4px; background: rgba(255,255,255,0.08); border-radius: 2px; margin-bottom: 3px; }
     .mockup-card-line.short { width: 60%; }
-
-    /* Floating badges */
     .mockup-float {
       position: absolute; background: #1c1c1e; border: 1px solid rgba(255,255,255,0.12);
       border-radius: 10px; padding: 8px 12px; font-size: 10px; font-weight: 700;
@@ -170,7 +152,7 @@
     .mockup-float.bottom-right { bottom: 40px; right: -24px; }
     .badge-icon { font-size: 16px; }
 
-    /* ── LOGOS / TRUST ── */
+    /* ── TRUST ── */
     .trust { padding: 32px 24px; border-bottom: 1px solid var(--border); }
     .trust-inner { max-width: 1160px; margin: 0 auto; text-align: center; }
     .trust p { font-size: 12px; color: var(--muted); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 20px; }
@@ -196,93 +178,170 @@
     /* ── FEATURES ── */
     .features-bg { background: var(--bg2); }
     .features-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; margin-top: 56px; }
-    .feature-card {
-      background: var(--bg3); padding: 32px 28px;
-      border: 1px solid var(--border);
-      transition: border-color 0.2s;
-    }
+    .feature-card { background: var(--bg3); padding: 32px 28px; border: 1px solid var(--border); transition: border-color 0.2s; }
     .feature-card:hover { border-color: rgba(201,168,76,0.3); }
     .feature-icon { font-size: 28px; margin-bottom: 16px; }
     .feature-title { font-size: 16px; font-weight: 700; margin-bottom: 8px; color: var(--text); }
     .feature-desc { font-size: 14px; color: #777; line-height: 1.65; }
-    .feature-tag {
-      display: inline-block; margin-top: 12px; padding: 3px 10px;
-      background: rgba(34,197,94,0.1); border-radius: 100px;
-      font-size: 10px; font-weight: 700; color: var(--green); letter-spacing: 0.3px;
-    }
+    .feature-tag { display: inline-block; margin-top: 12px; padding: 3px 10px; background: rgba(34,197,94,0.1); border-radius: 100px; font-size: 10px; font-weight: 700; color: var(--green); letter-spacing: 0.3px; }
 
-    /* ── WHAT'S INCLUDED ── */
-    .included-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; margin-top: 56px; align-items: start; }
-    .included-list { display: flex; flex-direction: column; gap: 12px; }
-    .included-item {
-      display: flex; align-items: flex-start; gap: 12px; padding: 14px 16px;
-      background: var(--bg3); border: 1px solid var(--border); border-radius: 10px;
-      transition: border-color 0.2s;
+    /* ── HOW IT WORKS ── */
+    .how-it-works-bg { background: var(--bg); }
+    .steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; margin-top: 56px; position: relative; }
+    .steps::before {
+      content: ""; position: absolute; top: 32px; left: calc(16.66% + 16px); right: calc(16.66% + 16px);
+      height: 1px; background: linear-gradient(90deg, var(--gold-dim), rgba(201,168,76,0.3), var(--gold-dim));
     }
-    .included-item:hover { border-color: rgba(201,168,76,0.25); }
-    .check { font-size: 16px; flex-shrink: 0; margin-top: 1px; }
-    .included-text strong { display: block; font-size: 14px; font-weight: 600; color: var(--text); margin-bottom: 2px; }
-    .included-text span { font-size: 13px; color: #666; }
+    .step { text-align: center; padding: 0 16px; }
+    .step-num {
+      width: 64px; height: 64px; border-radius: 50%; margin: 0 auto 24px;
+      background: var(--gold-dim); border: 1px solid rgba(201,168,76,0.35);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 22px; font-weight: 800; color: var(--gold);
+      position: relative; z-index: 1;
+    }
+    .step-title { font-size: 17px; font-weight: 700; margin-bottom: 10px; }
+    .step-desc { font-size: 14px; color: #777; line-height: 1.7; }
 
-    /* comparison box */
-    .vs-box {
+    /* ── COMPARISON ── */
+    .comparison-bg { background: var(--bg2); }
+    .comparison-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; margin-top: 56px; align-items: start; }
+    .comp-table { width: 100%; border-collapse: collapse; }
+    .comp-table th { text-align: left; font-size: 11px; text-transform: uppercase; letter-spacing: 1px; color: #555; padding: 0 16px 14px; }
+    .comp-table th:not(:first-child) { text-align: center; }
+    .comp-table td { padding: 13px 16px; border-top: 1px solid var(--border); font-size: 14px; }
+    .comp-table td:not(:first-child) { text-align: center; font-weight: 700; }
+    .comp-table td:first-child { color: #999; }
+    .comp-them { color: #ff6b6b; }
+    .comp-us { color: var(--green); }
+    .comp-highlight-row td { background: rgba(201,168,76,0.04); }
+    .comp-badge {
+      display: inline-block; background: var(--gold); color: #0e0e0e;
+      font-size: 10px; font-weight: 800; padding: 3px 10px; border-radius: 100px;
+    }
+    .comp-summary {
       background: linear-gradient(160deg, #0f1f2e, #0a1a10);
       border: 1px solid rgba(201,168,76,0.2); border-radius: 16px; padding: 32px;
       position: sticky; top: 88px;
     }
-    .vs-box h3 { font-size: 18px; font-weight: 700; margin-bottom: 24px; color: var(--text); }
-    .vs-row { display: flex; justify-content: space-between; align-items: center; padding: 12px 0; border-bottom: 1px solid var(--border); }
-    .vs-row:last-child { border-bottom: none; }
-    .vs-label { font-size: 13px; color: #888; }
-    .vs-them { font-size: 13px; color: #ff6b6b; font-weight: 600; }
-    .vs-us { font-size: 13px; color: var(--green); font-weight: 700; }
-    .vs-highlight {
-      margin-top: 20px; background: var(--gold-dim); border: 1px solid rgba(201,168,76,0.3);
-      border-radius: 10px; padding: 14px 16px; text-align: center;
-    }
-    .vs-highlight .big { font-size: 28px; font-weight: 800; color: var(--gold); }
-    .vs-highlight .sub { font-size: 12px; color: #888; margin-top: 2px; }
+    .comp-summary h3 { font-size: 18px; font-weight: 700; margin-bottom: 20px; }
+    .comp-row { display: flex; justify-content: space-between; align-items: center; padding: 12px 0; border-bottom: 1px solid var(--border); }
+    .comp-row:last-of-type { border-bottom: none; }
+    .comp-label { font-size: 13px; color: #888; }
+    .comp-val-bad { font-size: 13px; color: #ff6b6b; font-weight: 600; }
+    .comp-val-good { font-size: 13px; color: var(--green); font-weight: 700; }
+    .comp-cta-box { margin-top: 20px; background: var(--gold-dim); border: 1px solid rgba(201,168,76,0.3); border-radius: 10px; padding: 14px 16px; text-align: center; }
+    .comp-cta-box .big { font-size: 26px; font-weight: 800; color: var(--gold); }
+    .comp-cta-box .sub { font-size: 12px; color: #888; margin-top: 2px; }
 
     /* ── PRICING ── */
-    .pricing-bg { background: var(--bg2); }
-    .pricing-wrap { margin-top: 56px; display: flex; justify-content: center; }
-    .pricing-card {
-      background: var(--bg3); border: 1px solid rgba(201,168,76,0.4); border-radius: 20px;
-      padding: 48px; max-width: 520px; width: 100%; position: relative; overflow: hidden;
+    .pricing-bg { background: var(--bg); }
+    .pricing-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 56px; max-width: 1200px; margin-left: auto; margin-right: auto; }
+
+    /* Template Only card */
+    .pricing-card-standard {
+      background: var(--bg3); border: 1px solid var(--border); border-radius: 20px;
+      padding: 36px; position: relative; overflow: hidden;
     }
-    .pricing-card::before {
+
+    /* Guided Setup card */
+    .pricing-card-guided {
+      background: var(--bg3); border: 1px solid rgba(100,160,220,0.3); border-radius: 20px;
+      padding: 36px; position: relative; overflow: hidden;
+    }
+    .pricing-card-guided::before {
+      content: ""; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+      background: linear-gradient(90deg, #4a90d9, #5bb8d4);
+    }
+
+    /* Done For You card — Featured */
+    .pricing-card-featured {
+      background: var(--bg3); border: 2px solid rgba(201,168,76,0.5); border-radius: 20px;
+      padding: 36px; position: relative; overflow: hidden;
+    }
+    .pricing-card-featured::before {
       content: ""; position: absolute; top: 0; left: 0; right: 0; height: 3px;
       background: linear-gradient(90deg, var(--gold), var(--gold-light));
     }
-    .pricing-badge {
-      display: inline-block; background: var(--gold); color: #0e0e0e;
-      font-size: 11px; font-weight: 800; padding: 4px 12px; border-radius: 100px;
-      text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 24px;
+
+    .pricing-pill {
+      display: inline-block; font-size: 11px; font-weight: 800; padding: 4px 12px;
+      border-radius: 100px; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 8px;
     }
-    .pricing-name { font-size: 22px; font-weight: 800; margin-bottom: 8px; }
-    .pricing-price-row { display: flex; align-items: flex-end; gap: 8px; margin-bottom: 6px; }
-    .pricing-price { font-size: 64px; font-weight: 800; color: var(--gold); line-height: 1; }
-    .pricing-period { font-size: 14px; color: #666; margin-bottom: 8px; }
-    .pricing-was { font-size: 13px; color: #555; text-decoration: line-through; margin-bottom: 4px; }
-    .pricing-save { font-size: 12px; color: var(--green); font-weight: 700; margin-bottom: 28px; }
-    .pricing-divider { height: 1px; background: var(--border); margin: 24px 0; }
-    .pricing-features { display: flex; flex-direction: column; gap: 10px; margin-bottom: 32px; }
-    .pricing-feat { display: flex; align-items: center; gap: 10px; font-size: 14px; color: #bbb; }
-    .pricing-feat .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--gold); flex-shrink: 0; }
-    .btn-buy {
-      display: block; width: 100%; padding: 17px; background: var(--gold);
-      border: none; border-radius: 12px; font-size: 16px; font-weight: 800;
-      color: #0e0e0e; cursor: pointer; text-align: center;
-      transition: all 0.2s;
+    .pill-gold { background: var(--gold); color: #0e0e0e; }
+    .pill-blue { background: rgba(100,160,220,0.15); border: 1px solid rgba(100,160,220,0.4); color: #7ec8e3; }
+    .pill-outline { background: transparent; border: 1px solid var(--border); color: #888; }
+
+    .promo-strip {
+      display: inline-flex; align-items: center; gap: 6px;
+      background: rgba(34,197,94,0.1); border: 1px solid rgba(34,197,94,0.25);
+      border-radius: 100px; padding: 4px 12px; font-size: 11px; font-weight: 700;
+      color: var(--green); margin-bottom: 16px;
     }
-    .btn-buy:hover { background: var(--gold-light); transform: translateY(-2px); box-shadow: 0 12px 32px rgba(201,168,76,0.35); }
-    .pricing-note { font-size: 12px; color: #555; text-align: center; margin-top: 14px; }
-    .pricing-side { margin-top: 32px; display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
-    .side-item { background: rgba(255,255,255,0.03); border: 1px solid var(--border); border-radius: 10px; padding: 16px; text-align: center; }
-    .side-icon { font-size: 20px; margin-bottom: 6px; }
-    .side-label { font-size: 12px; color: #777; }
+
+    .pricing-name { font-size: 18px; font-weight: 800; margin-bottom: 8px; }
+    .pricing-tagline { font-size: 13px; color: #777; line-height: 1.6; margin-bottom: 20px; }
+
+    .price-row { display: flex; align-items: flex-end; gap: 6px; margin-bottom: 4px; }
+    .price-amount { font-size: 52px; font-weight: 800; color: var(--gold); line-height: 1; }
+    .price-period { font-size: 14px; color: #666; margin-bottom: 8px; }
+    .price-was { font-size: 12px; color: #555; margin-bottom: 16px; }
+    .price-was s { color: #555; }
+
+    .pricing-divider { height: 1px; background: var(--border); margin: 20px 0; }
+
+    .pricing-features { display: flex; flex-direction: column; gap: 8px; margin-bottom: 24px; }
+    .pricing-feat { display: flex; align-items: flex-start; gap: 10px; font-size: 13px; color: #bbb; }
+    .feat-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--gold); flex-shrink: 0; margin-top: 6px; }
+    .feat-dot-dim { background: #444; }
+
+    .btn-buy-featured {
+      display: block; width: 100%; padding: 15px; background: var(--gold);
+      border: none; border-radius: 12px; font-size: 15px; font-weight: 800;
+      color: #0e0e0e; cursor: pointer; text-align: center; transition: all 0.2s;
+    }
+    .btn-buy-featured:hover { background: var(--gold-light); transform: translateY(-2px); box-shadow: 0 12px 32px rgba(201,168,76,0.35); }
+
+    .btn-buy-guided {
+      display: block; width: 100%; padding: 15px;
+      background: rgba(100,160,220,0.12); border: 1.5px solid rgba(100,160,220,0.4); border-radius: 12px;
+      font-size: 15px; font-weight: 700; color: #7ec8e3; cursor: pointer; text-align: center; transition: all 0.2s;
+    }
+    .btn-buy-guided:hover { background: rgba(100,160,220,0.22); border-color: rgba(100,160,220,0.6); }
+
+    .btn-buy-standard {
+      display: block; width: 100%; padding: 15px;
+      background: transparent; border: 1.5px solid rgba(255,255,255,0.15); border-radius: 12px;
+      font-size: 15px; font-weight: 700; color: var(--text); cursor: pointer; text-align: center; transition: all 0.2s;
+    }
+    .btn-buy-standard:hover { border-color: rgba(255,255,255,0.3); background: rgba(255,255,255,0.04); }
+
+    .pricing-note { font-size: 12px; color: #555; text-align: center; margin-top: 12px; line-height: 1.7; }
+    .pricing-note a { color: #666; text-decoration: underline; }
+
+    /* ── TIER BREAKDOWN ── */
+    .tier-breakdown { margin-top: 64px; border-top: 1px solid var(--border); padding-top: 48px; }
+    .tier-breakdown-title { font-size: 16px; font-weight: 700; color: var(--text); margin-bottom: 8px; text-align: center; }
+    .tier-breakdown-sub { font-size: 13px; color: var(--muted); text-align: center; margin-bottom: 32px; }
+    .tier-breakdown-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+    .tier-col-name { font-size: 12px; font-weight: 800; color: #ccc; margin-bottom: 14px; padding-bottom: 10px; border-bottom: 1px solid var(--border); }
+    .tier-section { margin-bottom: 18px; }
+    .tier-section-label { font-size: 10px; text-transform: uppercase; letter-spacing: 0.8px; font-weight: 700; color: #444; margin-bottom: 7px; }
+    .tier-item { display: flex; align-items: flex-start; gap: 7px; font-size: 12px; line-height: 1.5; margin-bottom: 5px; }
+    .tier-item.yes { color: #bbb; }
+    .tier-item.no { color: #555; }
+    .ti-check { color: var(--green); flex-shrink: 0; font-weight: 700; }
+    .ti-x { color: #3a3a3a; flex-shrink: 0; }
+    .tier-shared {
+      margin-top: 28px; background: rgba(255,255,255,0.02);
+      border: 1px solid var(--border); border-radius: 12px; padding: 20px 24px;
+    }
+    .tier-shared-label { font-size: 10px; text-transform: uppercase; letter-spacing: 0.8px; font-weight: 700; color: #444; margin-bottom: 10px; }
+    .tier-shared-note { font-size: 12px; color: #555; line-height: 1.8; }
+    .tier-shared-note strong { color: #666; }
 
     /* ── FAQ ── */
+    .faq-bg { background: var(--bg2); }
     .faq-list { margin-top: 48px; display: flex; flex-direction: column; gap: 2px; }
     details {
       background: var(--bg3); border: 1px solid var(--border); border-radius: 12px;
@@ -312,33 +371,53 @@
     .demo-btns { display: flex; justify-content: center; gap: 14px; flex-wrap: wrap; }
 
     /* ── FOOTER ── */
-    footer {
-      background: var(--bg2); border-top: 1px solid var(--border);
-      padding: 40px 24px; text-align: center;
-    }
+    footer { background: var(--bg2); border-top: 1px solid var(--border); padding: 40px 24px; text-align: center; }
     .footer-logo { display: flex; align-items: center; justify-content: center; gap: 8px; margin-bottom: 12px; }
     .footer-text { font-size: 13px; color: #555; }
     .footer-text a { color: #666; }
     .footer-text a:hover { color: var(--gold); }
 
     /* ── RESPONSIVE ── */
+    @media (max-width: 1100px) {
+      .pricing-grid { grid-template-columns: 1fr 1fr; max-width: 760px; }
+      .tier-breakdown-grid { grid-template-columns: 1fr; }
+    }
     @media (max-width: 900px) {
       .hero-inner { grid-template-columns: 1fr; gap: 48px; }
       .browser-mockup { transform: none !important; }
       .mockup-float { display: none; }
       .features-grid { grid-template-columns: 1fr 1fr; }
-      .included-grid { grid-template-columns: 1fr; }
-      .vs-box { position: static; }
+      .steps { grid-template-columns: 1fr; }
+      .steps::before { display: none; }
+      .comparison-grid { grid-template-columns: 1fr; }
+      .comp-summary { position: static; }
+      .pricing-grid { grid-template-columns: 1fr; max-width: 480px; }
     }
     @media (max-width: 600px) {
       .features-grid { grid-template-columns: 1fr; }
       nav { padding: 0 16px; }
       .hero { padding: 60px 16px 48px; }
       section { padding: 64px 16px; }
-      .pricing-card { padding: 32px 24px; }
+      .pricing-card-featured, .pricing-card-guided, .pricing-card-standard { padding: 28px 20px; }
       .hero-proof { gap: 20px; }
+      .comp-table th:nth-child(2), .comp-table td:nth-child(2) { display: none; }
+    }
+
+    /* ── Stripe Buy Button sizing ── */
+    stripe-buy-button { display: block; width: 100%; }
+
+    /* ── DFY billing toggle ── */
+    .dfy-toggle { display: flex; gap: 8px; margin-bottom: 12px; }
+    .dfy-toggle button {
+      flex: 1; padding: 9px 12px; border-radius: 8px; font-size: 13px; font-weight: 600;
+      cursor: pointer; border: 1.5px solid rgba(255,255,255,0.15);
+      background: transparent; color: var(--muted); transition: all 0.2s;
+    }
+    .dfy-toggle button.dfy-active {
+      background: rgba(201,168,76,0.15); border-color: var(--gold); color: var(--gold);
     }
   </style>
+  <script async src="https://js.stripe.com/v3/buy-button.js"></script>
 </head>
 <body>
 
@@ -352,7 +431,7 @@
   </div>
   <div class="nav-actions">
     <a href="https://demo.wellspringweb.com" target="_blank" class="btn-ghost">View Demo</a>
-    <a href="#pricing" class="btn-gold">Get It — $499</a>
+    <a href="#pricing" class="btn-gold">See Plans</a>
   </div>
 </nav>
 
@@ -360,29 +439,29 @@
 <section class="hero">
   <div class="hero-inner">
     <div>
-      <div class="hero-badge">Launch Special — Save $300</div>
-      <h1>Your Chiropractic Practice,<br /><em>Online in Minutes</em></h1>
+      <div class="hero-badge">Limited Time — Setup Fee Waived</div>
+      <h1>Your Chiropractic Practice,<br /><em>Online This Week</em></h1>
       <p class="hero-sub">
-        A complete, professional chiropractic website with <strong>online booking, patient portal,
-        admin panel,</strong> and email notifications — built, owned, and deployed by you.
-        <strong>No monthly platform fees.</strong>
+        A complete website with <strong>online booking, patient portal, and payments</strong> —
+        built specifically for chiropractors. Buy the source code, launch with our expert
+        guidance, or let us run everything for you.
       </p>
       <div class="hero-cta">
-        <a href="#pricing" class="btn-hero-primary">Get ChiroTemplate — $499 →</a>
+        <a href="#pricing" class="btn-hero-primary">See Plans &amp; Pricing →</a>
         <a href="https://demo.wellspringweb.com" target="_blank" class="btn-hero-secondary">▶ View Live Demo</a>
       </div>
       <div class="hero-proof">
         <div class="proof-item">
-          <div class="proof-num">$0</div>
-          <div class="proof-label">Monthly fees</div>
+          <div class="proof-num">&lt; 48 hrs</div>
+          <div class="proof-label">Site live (managed)</div>
         </div>
         <div class="proof-item">
-          <div class="proof-num">15 min</div>
-          <div class="proof-label">Avg. setup time</div>
+          <div class="proof-num">$0</div>
+          <div class="proof-label">Setup fee right now</div>
         </div>
         <div class="proof-item">
           <div class="proof-num">100%</div>
-          <div class="proof-label">You own the code</div>
+          <div class="proof-label">Built for chiro</div>
         </div>
       </div>
     </div>
@@ -391,9 +470,7 @@
     <div style="position: relative;">
       <div class="browser-mockup">
         <div class="browser-bar">
-          <div class="browser-dots">
-            <span></span><span></span><span></span>
-          </div>
+          <div class="browser-dots"><span></span><span></span><span></span></div>
           <div class="browser-url">demo.wellspringweb.com</div>
         </div>
         <div class="browser-content">
@@ -443,8 +520,6 @@
           </div>
         </div>
       </div>
-
-      <!-- Floating badges -->
       <div class="mockup-float top-right">
         <span class="badge-icon">⭐</span>
         <div>
@@ -455,8 +530,8 @@
       <div class="mockup-float bottom-right">
         <span class="badge-icon">⚡</span>
         <div>
-          <div style="font-size:11px;font-weight:800;">Deploy in Minutes</div>
-          <div style="font-size:10px;color:#888;font-weight:400;">Netlify + Supabase</div>
+          <div style="font-size:11px;font-weight:800;">Live in Under 48 Hours</div>
+          <div style="font-size:10px;color:#888;font-weight:400;">We handle everything</div>
         </div>
       </div>
     </div>
@@ -473,7 +548,6 @@
       <div class="trust-logo">✉️ RESEND</div>
       <div class="trust-logo">💳 STRIPE</div>
       <div class="trust-logo">📅 GOOGLE CALENDAR</div>
-      <div class="trust-logo">🍋 LEMON SQUEEZY</div>
     </div>
   </div>
 </div>
@@ -483,123 +557,188 @@
   <div class="section-inner">
     <div class="section-tag">Everything Included</div>
     <h2>Not just a template —<br /><em>a complete platform</em></h2>
-    <p class="section-sub">Everything a modern chiropractic practice needs to attract patients, manage appointments, and grow — without the monthly subscription trap.</p>
+    <p class="section-sub">Every feature a modern chiropractic practice needs to attract patients, manage appointments, and grow — included out of the box.</p>
 
     <div class="features-grid">
       <div class="feature-card">
         <div class="feature-icon">📅</div>
         <div class="feature-title">Online Booking System</div>
-        <div class="feature-desc">Multi-step booking flow with service selection, provider choice, date/time picker, and instant confirmation emails. Works with your Google Calendar.</div>
-        <span class="feature-tag">✓ Built-in</span>
+        <div class="feature-desc">Multi-step booking flow with service selection, provider choice, date/time picker, and instant confirmation emails. Syncs with your Google Calendar.</div>
+        <span class="feature-tag">✓ Included</span>
       </div>
       <div class="feature-card">
         <div class="feature-icon">🔐</div>
         <div class="feature-title">Patient Portal</div>
-        <div class="feature-desc">Patients log in to view appointments, complete intake forms, message your team, and access their notes — all in a branded, secure portal.</div>
-        <span class="feature-tag">✓ Built-in</span>
+        <div class="feature-desc">Patients log in to view appointments, complete intake forms, message your team, and access their care notes — all in a branded, secure portal.</div>
+        <span class="feature-tag">✓ Included</span>
       </div>
       <div class="feature-card">
         <div class="feature-icon">⚙️</div>
         <div class="feature-title">Visual Admin Panel</div>
-        <div class="feature-desc">Change your logo, colors, services, hours, team, and every piece of content — no code, no plugins, no developer needed.</div>
-        <span class="feature-tag">✓ Built-in</span>
+        <div class="feature-desc">Change your logo, colors, services, hours, team bios, and every piece of content — no code, no plugins, no developer needed.</div>
+        <span class="feature-tag">✓ Included</span>
       </div>
       <div class="feature-card">
         <div class="feature-icon">✉️</div>
-        <div class="feature-title">Email & SMS Notifications</div>
+        <div class="feature-title">Email &amp; SMS Notifications</div>
         <div class="feature-desc">Automatic appointment confirmations, 24-hour reminders, and new patient welcome emails — all branded to your practice.</div>
-        <span class="feature-tag">✓ Built-in</span>
+        <span class="feature-tag">✓ Included</span>
       </div>
       <div class="feature-card">
         <div class="feature-icon">📝</div>
         <div class="feature-title">Digital Intake Forms</div>
-        <div class="feature-desc">Patients complete their intake forms online before their first visit. Responses are saved to their portal profile automatically.</div>
-        <span class="feature-tag">✓ Built-in</span>
+        <div class="feature-desc">Patients complete intake forms online before their first visit. Responses are saved to their portal profile automatically.</div>
+        <span class="feature-tag">✓ Included</span>
       </div>
       <div class="feature-card">
         <div class="feature-icon">📰</div>
         <div class="feature-title">Built-in Blog</div>
-        <div class="feature-desc">Publish health tips and practice news to attract organic traffic. Full admin editor — no CMS subscription required.</div>
-        <span class="feature-tag">✓ Built-in</span>
+        <div class="feature-desc">Publish health tips and practice news to attract organic search traffic. Full admin editor — no CMS subscription required.</div>
+        <span class="feature-tag">✓ Included</span>
       </div>
       <div class="feature-card">
         <div class="feature-icon">💳</div>
         <div class="feature-title">Online Bill Pay</div>
-        <div class="feature-desc">Accept payments via Stripe directly on your site. Simple payment link setup or full on-site checkout — your choice.</div>
-        <span class="feature-tag">✓ Built-in</span>
+        <div class="feature-desc">Accept payments via Stripe directly on your site. Simple payment link setup or full embedded checkout with Apple/Google Pay.</div>
+        <span class="feature-tag">✓ Included</span>
       </div>
       <div class="feature-card">
         <div class="feature-icon">📱</div>
         <div class="feature-title">Fully Responsive</div>
         <div class="feature-desc">Looks and works perfectly on every device — mobile, tablet, and desktop. Built with modern CSS and tested across all screen sizes.</div>
-        <span class="feature-tag">✓ Built-in</span>
+        <span class="feature-tag">✓ Included</span>
       </div>
       <div class="feature-card">
         <div class="feature-icon">🚀</div>
         <div class="feature-title">Launch Wizard</div>
-        <div class="feature-desc">A guided setup wizard walks you through practice info, hours, team, and branding — your site is ready to go in under 15 minutes.</div>
-        <span class="feature-tag">✓ Built-in</span>
+        <div class="feature-desc">A guided setup wizard walks through practice info, hours, team, and branding — your site is personalized and ready to go in minutes.</div>
+        <span class="feature-tag">✓ Included</span>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ── WHAT'S INCLUDED ── -->
-<section>
+<!-- ── HOW IT WORKS ── -->
+<section class="how-it-works-bg">
   <div class="section-inner">
-    <div class="section-tag">No Hidden Costs</div>
-    <h2>Compare the <em>real cost</em></h2>
-    <p class="section-sub">Other platforms charge monthly. You pay once and own everything.</p>
+    <div class="section-tag">Done For You</div>
+    <h2>We handle <em>everything</em></h2>
+    <p class="section-sub">Choose the managed plan and your site is live in under 48 hours — without you touching a single line of code.</p>
 
-    <div class="included-grid">
-      <div class="included-list">
-        <div class="included-item"><span class="check">✅</span><div class="included-text"><strong>Full source code</strong><span>Deploy anywhere, modify anything, own it forever</span></div></div>
-        <div class="included-item"><span class="check">✅</span><div class="included-text"><strong>Complete booking system</strong><span>No Acuity or Calendly subscription needed — saves $15–50/month</span></div></div>
-        <div class="included-item"><span class="check">✅</span><div class="included-text"><strong>Patient portal + intake forms</strong><span>Replaces dedicated patient management tools</span></div></div>
-        <div class="included-item"><span class="check">✅</span><div class="included-text"><strong>Visual admin panel</strong><span>Edit everything without touching code</span></div></div>
-        <div class="included-item"><span class="check">✅</span><div class="included-text"><strong>Email notifications (Resend)</strong><span>Free tier covers most practices (3,000 emails/month)</span></div></div>
-        <div class="included-item"><span class="check">✅</span><div class="included-text"><strong>Database + auth (Supabase)</strong><span>Free tier included — no database costs for most practices</span></div></div>
-        <div class="included-item"><span class="check">✅</span><div class="included-text"><strong>Hosting (Netlify)</strong><span>Free tier handles virtually all chiro practice traffic</span></div></div>
-        <div class="included-item"><span class="check">✅</span><div class="included-text"><strong>Setup guide + documentation</strong><span>Step-by-step instructions for every feature</span></div></div>
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">1</div>
+        <div class="step-title">You tell us about your practice</div>
+        <div class="step-desc">After checkout, complete a short intake form — practice name, logo, colors, services, hours, and team. Takes about 10 minutes.</div>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <div class="step-title">We build and configure everything</div>
+        <div class="step-desc">We deploy your site to Netlify, set up your Supabase database, connect Stripe payments, configure Google Calendar, and brand it to your practice.</div>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <div class="step-title">Your site goes live — we keep it running</div>
+        <div class="step-desc">You get a live URL, admin login, and a walkthrough. We handle hosting, updates, and ongoing maintenance. You focus on your patients.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── COMPARISON ── -->
+<section class="comparison-bg">
+  <div class="section-inner">
+    <div class="section-tag">How We Compare</div>
+    <h2>More features.<br /><em>Lower price.</em></h2>
+    <p class="section-sub">To get a patient portal from OnlineChiro.com you pay $466/month. ChiroTemplate's Done-For-You plan includes it — and much more — at $349/month.</p>
+
+    <div class="comparison-grid">
+      <div>
+        <table class="comp-table">
+          <thead>
+            <tr>
+              <th>Feature</th>
+              <th>OnlineChiro.com<br /><span style="font-weight:400;font-size:10px;color:#555;">(Select Plus — their portal tier)</span></th>
+              <th><span class="comp-badge">ChiroTemplate</span></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Monthly fee (Done-For-You)</td>
+              <td class="comp-them">$466/mo</td>
+              <td class="comp-us">$349/mo</td>
+            </tr>
+            <tr>
+              <td>Setup fee</td>
+              <td class="comp-them">Varies</td>
+              <td class="comp-us"><s style="color:#555;">$399</s> FREE ✦</td>
+            </tr>
+            <tr>
+              <td>Contract required</td>
+              <td class="comp-us">None</td>
+              <td class="comp-us">None</td>
+            </tr>
+            <tr>
+              <td>Patient portal + HIPAA forms</td>
+              <td class="comp-them">$466+/mo tier only</td>
+              <td class="comp-us">Included at $349/mo</td>
+            </tr>
+            <tr>
+              <td>Online booking system</td>
+              <td class="comp-them">Scheduling widget only</td>
+              <td class="comp-us">Full built-in system</td>
+            </tr>
+            <tr>
+              <td>SMS appointment reminders</td>
+              <td class="comp-them">Not included</td>
+              <td class="comp-us">Included</td>
+            </tr>
+            <tr>
+              <td>Staff portal</td>
+              <td class="comp-them">Not available</td>
+              <td class="comp-us">Included</td>
+            </tr>
+            <tr>
+              <td>iMatrix pricing</td>
+              <td class="comp-them">Call for a quote</td>
+              <td class="comp-us">$349/mo — transparent</td>
+            </tr>
+            <tr class="comp-highlight-row">
+              <td style="font-weight:700;color:#ccc;">To get a patient portal</td>
+              <td class="comp-them" style="font-size:15px;">$466/mo</td>
+              <td class="comp-us" style="font-size:15px;">$349/mo</td>
+            </tr>
+          </tbody>
+        </table>
+        <p style="font-size:11px;color:#555;margin-top:12px;">✦ Setup fee waiver is a limited-time offer. Pricing sourced from onlinechiro.com/packages-and-pricing.</p>
       </div>
 
       <div>
-        <div class="vs-box">
-          <h3>💸 vs. Typical Monthly Platforms</h3>
-          <div class="vs-row">
-            <span class="vs-label">Website platform</span>
-            <span class="vs-them">$100–200/mo</span>
-            <span class="vs-us">$0</span>
+        <div class="comp-summary">
+          <h3>You save $117/month vs. OnlineChiro</h3>
+          <div class="comp-row">
+            <span class="comp-label">OnlineChiro (w/ portal)</span>
+            <span class="comp-val-bad">$466/mo</span>
           </div>
-          <div class="vs-row">
-            <span class="vs-label">Online booking</span>
-            <span class="vs-them">$15–50/mo</span>
-            <span class="vs-us">$0</span>
+          <div class="comp-row">
+            <span class="comp-label">ChiroTemplate Done-For-You</span>
+            <span class="comp-val-good">$349/mo</span>
           </div>
-          <div class="vs-row">
-            <span class="vs-label">Patient portal</span>
-            <span class="vs-them">$50–100/mo</span>
-            <span class="vs-us">$0</span>
+          <div class="comp-row">
+            <span class="comp-label">Monthly savings</span>
+            <span class="comp-val-good">$117/mo</span>
           </div>
-          <div class="vs-row">
-            <span class="vs-label">Email notifications</span>
-            <span class="vs-them">$20–40/mo</span>
-            <span class="vs-us">$0</span>
+          <div class="comp-row">
+            <span class="comp-label">Annual savings</span>
+            <span class="comp-val-good">$1,404/yr</span>
           </div>
-          <div class="vs-row">
-            <span class="vs-label">Custom design</span>
-            <span class="vs-them">$3,000–10,000</span>
-            <span class="vs-us">Included</span>
+          <div class="comp-row">
+            <span class="comp-label">iMatrix pricing</span>
+            <span class="comp-val-bad">Won't publish — call required</span>
           </div>
-          <div class="pricing-divider"></div>
-          <div class="vs-row">
-            <span class="vs-label" style="font-weight:700;color:#ccc;">Year 1 total</span>
-            <span class="vs-them" style="font-size:15px;">$5,000–15,000+</span>
-            <span class="vs-us" style="font-size:15px;">$499</span>
-          </div>
-          <div class="vs-highlight">
-            <div class="big">Save $4,500+</div>
-            <div class="sub">in your first year alone</div>
+          <div class="comp-cta-box">
+            <div class="big">Save $1,400+/yr</div>
+            <div class="sub">vs. OnlineChiro with equivalent features</div>
           </div>
         </div>
       </div>
@@ -611,70 +750,237 @@
 <section class="pricing-bg" id="pricing">
   <div class="section-inner">
     <div style="text-align: center; margin-bottom: 56px;">
-      <div class="section-tag">Simple Pricing</div>
-      <h2>One price.<br /><em>Everything included.</em></h2>
-      <p class="section-sub" style="margin: 0 auto;">No subscriptions. No upsells. No surprise fees. Pay once, use forever.</p>
+      <div class="section-tag">Choose Your Path</div>
+      <h2>Three ways to get<br /><em>ChiroTemplate</em></h2>
+      <p class="section-sub" style="margin: 0 auto;">Own the code yourself, launch with expert guidance, or let us run everything for you.</p>
     </div>
 
-    <div class="pricing-wrap">
-      <div>
-        <div class="pricing-card">
-          <div class="pricing-badge">🚀 Launch Special</div>
-          <div class="pricing-name">ChiroTemplate — Single Site License</div>
-          <div class="pricing-was">Regular price: $797</div>
-          <div class="pricing-price-row">
-            <div class="pricing-price">$499</div>
-            <div class="pricing-period">one-time</div>
-          </div>
-          <div class="pricing-save">✓ You save $298 — Launch Special pricing</div>
+    <div class="pricing-grid">
 
-          <div class="pricing-divider"></div>
+      <!-- CARD 1: Template Only -->
+      <div class="pricing-card-standard">
+        <div class="pricing-pill pill-outline">For Developers</div>
+        <div style="margin-bottom: 20px;"></div>
+        <div class="pricing-name">Template Only</div>
+        <div class="pricing-tagline">Full source code, yours forever. Deploy to Netlify + Supabase yourself using our detailed setup guide.</div>
 
-          <div class="pricing-features">
-            <div class="pricing-feat"><span class="dot"></span>Complete website source code (React)</div>
-            <div class="pricing-feat"><span class="dot"></span>Online booking system — unlimited appointments</div>
-            <div class="pricing-feat"><span class="dot"></span>Patient portal + digital intake forms</div>
-            <div class="pricing-feat"><span class="dot"></span>Visual admin panel — no code required</div>
-            <div class="pricing-feat"><span class="dot"></span>Email + SMS notification system</div>
-            <div class="pricing-feat"><span class="dot"></span>Blog, bill pay, Google Calendar integration</div>
-            <div class="pricing-feat"><span class="dot"></span>Launch wizard — guided setup in 15 minutes</div>
-            <div class="pricing-feat"><span class="dot"></span>Deploy to Netlify — free hosting for most practices</div>
-            <div class="pricing-feat"><span class="dot"></span>Step-by-step setup guide included</div>
-            <div class="pricing-feat"><span class="dot"></span>Single site license — yours to keep forever</div>
-          </div>
+        <div class="price-row">
+          <div class="price-amount" style="color:var(--text);">$999</div>
+          <div class="price-period">one-time</div>
+        </div>
+        <div class="price-was" style="color:transparent;">—</div>
 
-          <!-- REPLACE href with your Lemon Squeezy buy link -->
-          <a href="https://wellspringweb.lemonsqueezy.com/buy/REPLACE_WITH_PRODUCT_ID" class="btn-buy">
-            Get ChiroTemplate Now →
-          </a>
-          <div class="pricing-note">Secure checkout via Lemon Squeezy · Instant delivery · 30-day refund policy</div>
+        <div class="pricing-divider"></div>
+
+        <div class="pricing-features">
+          <div class="pricing-feat"><span class="feat-dot"></span>Complete React + Supabase source code</div>
+          <div class="pricing-feat"><span class="feat-dot"></span>Step-by-step setup guide (all integrations)</div>
+          <div class="pricing-feat"><span class="feat-dot"></span>Booking, patient portal, admin panel</div>
+          <div class="pricing-feat"><span class="feat-dot"></span>Email, SMS, Stripe, Google Calendar</div>
+          <div class="pricing-feat"><span class="feat-dot"></span>Single-site license — own it forever</div>
+          <div class="pricing-feat"><span class="feat-dot feat-dot-dim"></span><span style="color:#555;">You deploy and maintain it yourself</span></div>
+          <div class="pricing-feat"><span class="feat-dot feat-dot-dim"></span><span style="color:#555;">No setup assistance included</span></div>
+          <div class="pricing-feat"><span class="feat-dot feat-dot-dim"></span><span style="color:#555;">Updates sold separately ($249/yr)</span></div>
         </div>
 
-        <div class="pricing-side">
-          <div class="side-item">
-            <div class="side-icon">⚡</div>
-            <div class="side-label">Instant delivery after purchase</div>
-          </div>
-          <div class="side-item">
-            <div class="side-icon">🔒</div>
-            <div class="side-label">Secure Lemon Squeezy checkout</div>
-          </div>
-          <div class="side-item">
-            <div class="side-icon">♻️</div>
-            <div class="side-label">30-day refund policy</div>
-          </div>
-          <div class="side-item">
-            <div class="side-icon">📖</div>
-            <div class="side-label">Full setup guide included</div>
-          </div>
+        <stripe-buy-button
+          buy-button-id="buy_btn_1T8jqRCcZ6FUck3ifiH2k2tG"
+          publishable-key="pk_live_51T6bU3CcZ6FUck3ibsS6E8248RB8gsl7jS7G9Em7PUduV5WJD6vOP9TuQbxDFWp3Hh6xLGfbvawX1zGBvEdQ0XJR00ePhUuEBq"
+        ></stripe-buy-button>
+        <div class="pricing-note">
+          Secure checkout via Stripe · Instant code delivery<br />
+          Want updates? Add the <a href="#faq">Annual Update Subscription ($249/yr)</a>.
         </div>
       </div>
+
+      <!-- CARD 2: Guided Setup -->
+      <div class="pricing-card-guided">
+        <div class="pricing-pill pill-blue">Launch With Us</div>
+        <div style="margin-bottom: 20px;"></div>
+        <div class="pricing-name">Guided Setup</div>
+        <div class="pricing-tagline">We set everything up with you over 3 Zoom sessions. You own it completely — no monthly fees ever.</div>
+
+        <div class="price-row">
+          <div class="price-amount" style="color:#7ec8e3;">$2,499</div>
+          <div class="price-period">one-time</div>
+        </div>
+        <div class="price-was" style="color:transparent;">—</div>
+
+        <div class="pricing-divider"></div>
+
+        <div class="pricing-features">
+          <div class="pricing-feat"><span class="feat-dot" style="background:#7ec8e3;"></span>Everything in Template Only</div>
+          <div class="pricing-feat"><span class="feat-dot" style="background:#7ec8e3;"></span>3 live Zoom sessions — we set it up together</div>
+          <div class="pricing-feat"><span class="feat-dot" style="background:#7ec8e3;"></span>Netlify + Supabase deployed on your accounts</div>
+          <div class="pricing-feat"><span class="feat-dot" style="background:#7ec8e3;"></span>All integrations configured on screen</div>
+          <div class="pricing-feat"><span class="feat-dot" style="background:#7ec8e3;"></span>90-day email support after launch</div>
+          <div class="pricing-feat"><span class="feat-dot" style="background:#7ec8e3;"></span>12 months of code updates included</div>
+          <div class="pricing-feat"><span class="feat-dot feat-dot-dim"></span><span style="color:#555;">You host and maintain it after launch</span></div>
+          <div class="pricing-feat"><span class="feat-dot feat-dot-dim"></span><span style="color:#555;">No ongoing maintenance included</span></div>
+        </div>
+
+        <stripe-buy-button
+          buy-button-id="buy_btn_1T8juuCcZ6FUck3iN4CiSQx2"
+          publishable-key="pk_live_51T6bU3CcZ6FUck3ibsS6E8248RB8gsl7jS7G9Em7PUduV5WJD6vOP9TuQbxDFWp3Hh6xLGfbvawX1zGBvEdQ0XJR00ePhUuEBq"
+        ></stripe-buy-button>
+        <div class="pricing-note">
+          Secure checkout via Stripe · Sessions scheduled after purchase<br />
+          Questions first? <a href="https://wellspringweb.com/contact">Contact us</a> before buying.
+        </div>
+      </div>
+
+      <!-- CARD 3: Done For You -->
+      <div class="pricing-card-featured">
+        <div class="pricing-pill pill-gold">Most Popular</div>
+        <div style="margin-bottom: 4px;"></div>
+        <div class="promo-strip">✦ Limited Time — Setup Fee Waived</div>
+        <div class="pricing-name">Done For You</div>
+        <div class="pricing-tagline">We deploy, configure, and manage your entire site. You focus on patients — we handle everything else.</div>
+
+        <div class="price-row">
+          <div class="price-amount">$349</div>
+          <div class="price-period">/month</div>
+        </div>
+        <div class="price-was">Setup fee: <s>$399</s> — <span style="color:var(--green);font-weight:700;">Waived right now</span></div>
+
+        <div class="pricing-divider"></div>
+
+        <div class="pricing-features">
+          <div class="pricing-feat"><span class="feat-dot"></span>We deploy your site — done for you</div>
+          <div class="pricing-feat"><span class="feat-dot"></span>Supabase database configured and secured</div>
+          <div class="pricing-feat"><span class="feat-dot"></span>Stripe payments connected and tested</div>
+          <div class="pricing-feat"><span class="feat-dot"></span>Email + SMS notifications configured</div>
+          <div class="pricing-feat"><span class="feat-dot"></span>Ongoing hosting, updates &amp; maintenance</div>
+          <div class="pricing-feat"><span class="feat-dot"></span>Priority email support</div>
+          <div class="pricing-feat"><span class="feat-dot"></span>Template license included</div>
+          <div class="pricing-feat"><span class="feat-dot"></span>Cancel anytime — no long-term contract</div>
+        </div>
+
+        <div class="dfy-toggle">
+          <button id="dfy-btn-monthly" class="dfy-active" onclick="dfySwitch('monthly')">Monthly — $349/mo</button>
+          <button id="dfy-btn-yearly" onclick="dfySwitch('yearly')">Annual — Pay yearly</button>
+        </div>
+        <div id="dfy-monthly">
+          <stripe-buy-button
+            buy-button-id="buy_btn_1T8jxDCcZ6FUck3iFi1QAwpJ"
+            publishable-key="pk_live_51T6bU3CcZ6FUck3ibsS6E8248RB8gsl7jS7G9Em7PUduV5WJD6vOP9TuQbxDFWp3Hh6xLGfbvawX1zGBvEdQ0XJR00ePhUuEBq"
+          ></stripe-buy-button>
+        </div>
+        <div id="dfy-yearly" style="display:none">
+          <stripe-buy-button
+            buy-button-id="buy_btn_1T8jzBCcZ6FUck3iZU7rxq6N"
+            publishable-key="pk_live_51T6bU3CcZ6FUck3ibsS6E8248RB8gsl7jS7G9Em7PUduV5WJD6vOP9TuQbxDFWp3Hh6xLGfbvawX1zGBvEdQ0XJR00ePhUuEBq"
+          ></stripe-buy-button>
+        </div>
+        <script>
+          function dfySwitch(mode) {
+            document.getElementById('dfy-monthly').style.display = mode === 'monthly' ? 'block' : 'none';
+            document.getElementById('dfy-yearly').style.display  = mode === 'yearly'  ? 'block' : 'none';
+            document.getElementById('dfy-btn-monthly').className = mode === 'monthly' ? 'dfy-active' : '';
+            document.getElementById('dfy-btn-yearly').className  = mode === 'yearly'  ? 'dfy-active' : '';
+          }
+        </script>
+        <div class="pricing-note">
+          Secure checkout via Stripe · Cancel anytime<br />
+          <a href="#faq">Cancel within 12 months?</a> A $999 license fee applies to keep your site.
+        </div>
+      </div>
+
     </div>
+
+    <!-- ── TIER BREAKDOWN ── -->
+    <div class="tier-breakdown">
+      <div class="tier-breakdown-title">What's included in each plan — and what's not</div>
+      <div class="tier-breakdown-sub">We believe in full transparency. Here's exactly what each plan covers.</div>
+
+      <div class="tier-breakdown-grid">
+
+        <!-- Template Only -->
+        <div class="tier-col">
+          <div class="tier-col-name">Template Only — $999 one-time</div>
+          <div class="tier-section">
+            <div class="tier-section-label">Included</div>
+            <div class="tier-item yes"><span class="ti-check">✓</span>Complete React + Supabase source code</div>
+            <div class="tier-item yes"><span class="ti-check">✓</span>Detailed setup guide for all integrations</div>
+            <div class="tier-item yes"><span class="ti-check">✓</span>All features: booking, portal, admin, payments</div>
+            <div class="tier-item yes"><span class="ti-check">✓</span>Single-site license, yours to keep forever</div>
+          </div>
+          <div class="tier-section">
+            <div class="tier-section-label">Not Included</div>
+            <div class="tier-item no"><span class="ti-x">✗</span>Any deployment or setup assistance</div>
+            <div class="tier-item no"><span class="ti-x">✗</span>Ongoing support of any kind</div>
+            <div class="tier-item no"><span class="ti-x">✗</span>Future updates (add $249/yr subscription)</div>
+            <div class="tier-item no"><span class="ti-x">✗</span>Content, photography, or logo design</div>
+            <div class="tier-item no"><span class="ti-x">✗</span>Third-party service costs (see below)</div>
+          </div>
+        </div>
+
+        <!-- Guided Setup -->
+        <div class="tier-col">
+          <div class="tier-col-name">Guided Setup — $2,499 one-time</div>
+          <div class="tier-section">
+            <div class="tier-section-label">Included</div>
+            <div class="tier-item yes"><span class="ti-check">✓</span>Everything in Template Only</div>
+            <div class="tier-item yes"><span class="ti-check">✓</span>3 Zoom sessions — we set it up together</div>
+            <div class="tier-item yes"><span class="ti-check">✓</span>All integrations configured on screen</div>
+            <div class="tier-item yes"><span class="ti-check">✓</span>90-day email support post-launch</div>
+            <div class="tier-item yes"><span class="ti-check">✓</span>12 months of code updates</div>
+          </div>
+          <div class="tier-section">
+            <div class="tier-section-label">Not Included</div>
+            <div class="tier-item no"><span class="ti-x">✗</span>Ongoing hosting or maintenance after launch</div>
+            <div class="tier-item no"><span class="ti-x">✗</span>Support beyond the 90-day window</div>
+            <div class="tier-item no"><span class="ti-x">✗</span>Custom development beyond template features</div>
+            <div class="tier-item no"><span class="ti-x">✗</span>Twilio A2P 10DLC registration (add-on available)</div>
+            <div class="tier-item no"><span class="ti-x">✗</span>Content, photography, or logo design</div>
+            <div class="tier-item no"><span class="ti-x">✗</span>Third-party service costs (see below)</div>
+          </div>
+        </div>
+
+        <!-- Done For You -->
+        <div class="tier-col">
+          <div class="tier-col-name">Done For You — $349/month</div>
+          <div class="tier-section">
+            <div class="tier-section-label">Included</div>
+            <div class="tier-item yes"><span class="ti-check">✓</span>Full deployment and initial configuration</div>
+            <div class="tier-item yes"><span class="ti-check">✓</span>Ongoing Netlify + Supabase hosting oversight</div>
+            <div class="tier-item yes"><span class="ti-check">✓</span>All code updates applied automatically</div>
+            <div class="tier-item yes"><span class="ti-check">✓</span>Priority email support</div>
+            <div class="tier-item yes"><span class="ti-check">✓</span>Template license included — no extra charge</div>
+          </div>
+          <div class="tier-section">
+            <div class="tier-section-label">Not Included</div>
+            <div class="tier-item no"><span class="ti-x">✗</span>Custom development beyond template features</div>
+            <div class="tier-item no"><span class="ti-x">✗</span>EHR / practice management software integration</div>
+            <div class="tier-item no"><span class="ti-x">✗</span>Twilio A2P 10DLC registration (add-on available)</div>
+            <div class="tier-item no"><span class="ti-x">✗</span>Content, photography, or logo design</div>
+            <div class="tier-item no"><span class="ti-x">✗</span>Third-party service costs (see below)</div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Shared costs note -->
+      <div class="tier-shared">
+        <div class="tier-shared-label">Not included in any plan — third-party costs paid directly by your practice</div>
+        <div class="tier-shared-note">
+          These are standard costs for any web-based practice platform and not unique to ChiroTemplate:
+          <strong>Domain name</strong> (~$12–15/year) ·
+          <strong>Supabase</strong> (free tier works for most practices; Pro plan $25/mo adds a HIPAA BAA) ·
+          <strong>Stripe transaction fees</strong> (2.9% + 30¢ per payment — only if you accept online payments) ·
+          <strong>Twilio SMS</strong> (~$0.01/text + $1/mo phone number — optional) ·
+          <strong>Resend email</strong> (free up to 3,000 emails/month) ·
+          <strong>HIPAA BAAs</strong> (your responsibility with each vendor — required for compliance)
+        </div>
+      </div>
+
+    </div>
+
   </div>
 </section>
 
 <!-- ── FAQ ── -->
-<section>
+<section class="faq-bg" id="faq">
   <div class="section-inner">
     <div style="max-width: 700px; margin: 0 auto;">
       <div class="section-tag">FAQ</div>
@@ -682,32 +988,44 @@
 
       <div class="faq-list">
         <details>
-          <summary>Do I need to know how to code?</summary>
-          <div class="faq-answer">No. The admin panel lets you change your logo, colors, services, hours, team bios, and all content without touching any code. For setup, you'll need accounts on Netlify (free) and Supabase (free) — both are beginner-friendly and fully documented in the included setup guide.</div>
+          <summary>What's the difference between the three plans?</summary>
+          <div class="faq-answer">
+            <strong>Template Only ($999 one-time)</strong> — You get the full source code and set it up yourself using our detailed guide. Best for developers or tech-savvy owners who want full control and zero ongoing fees.<br /><br />
+            <strong>Guided Setup ($2,499 one-time)</strong> — We set everything up together across 3 live Zoom sessions. You walk away owning the site on your own accounts, with 90 days of email support and 12 months of updates included. No monthly fees ever.<br /><br />
+            <strong>Done For You ($349/month)</strong> — We handle everything: deployment, configuration, hosting oversight, updates, and ongoing support. You just fill out a short intake form and your site is live in under 48 hours.
+          </div>
         </details>
         <details>
-          <summary>What are the ongoing costs after I buy?</summary>
-          <div class="faq-answer">For most chiropractic practices, ongoing costs are $0/month. Netlify's free tier handles your hosting, Supabase's free tier handles your database and patient logins, and Resend's free tier covers up to 3,000 emails/month. You only pay if your traffic or email volume grows significantly.</div>
+          <summary>What does $349/month cover for Done For You?</summary>
+          <div class="faq-answer">Everything: your Netlify hosting, Supabase database, initial deployment and configuration of all integrations (Stripe, email/SMS notifications), ongoing maintenance, all code updates, and priority email support. The template license is included — you don't pay anything extra upfront. Third-party service costs (Twilio, Stripe transaction fees, your domain) are paid directly by your practice and not included.</div>
         </details>
         <details>
-          <summary>How long does setup take?</summary>
-          <div class="faq-answer">The built-in Launch Wizard walks you through practice name, contact info, brand colors, hours, and team — typically 10–15 minutes. Deploying to Netlify takes another 5 minutes. Full setup including integrations (Google Calendar, email, etc.) takes about an hour.</div>
+          <summary>What happens if I cancel the Done For You plan?</summary>
+          <div class="faq-answer">You can cancel anytime — there's no long-term contract. If you cancel <strong>within your first 12 months</strong> and want to keep your site running on your own hosting, a one-time $999 template license fee applies. After 12 months, you can take full ownership of your site files at no additional charge.</div>
+        </details>
+        <details>
+          <summary>Can I upgrade from Template Only to Done For You later?</summary>
+          <div class="faq-answer">Yes. If you buy the Template Only license and later decide you'd prefer managed hosting, we can transition you to the Done For You plan. We'll credit the $999 you paid toward your first few months. <a href="https://wellspringweb.com/contact">Contact us</a> to discuss.</div>
+        </details>
+        <details>
+          <summary>What is the Annual Update Subscription for?</summary>
+          <div class="faq-answer">Template Only and Guided Setup buyers own the code as it was at the time of purchase. The <strong>$249/year Update Subscription</strong> gives you access to all new features, security patches, and improvements we release throughout the year — delivered as updated source code. Done For You subscribers receive all updates automatically at no extra cost.</div>
         </details>
         <details>
           <summary>Can I customize the design?</summary>
-          <div class="faq-answer">Yes — extensively. The admin panel controls colors, fonts, logo, layout sections, and content. Since you receive the full source code (React), a developer can customize anything further. There are no locked-down templates or proprietary platforms.</div>
+          <div class="faq-answer">Yes — the admin panel lets you set your logo, brand colors, fonts, services, team bios, hours, and all page content without touching code. For deeper custom work (new layouts or features beyond the template), we offer custom development as an add-on — <a href="https://wellspringweb.com/contact">contact us</a> for a quote.</div>
         </details>
         <details>
-          <summary>What does "single site license" mean?</summary>
-          <div class="faq-answer">You can deploy ChiroTemplate to one domain (e.g., your practice website). The license key is tied to your site's domain. If you're a web developer building sites for multiple clients, please contact us about agency/multi-site licensing.</div>
+          <summary>What third-party accounts will I need?</summary>
+          <div class="faq-answer">All plans require a <strong>Supabase account</strong> (free tier works; $25/mo Pro adds a HIPAA BAA) and a <strong>Netlify account</strong> (free tier). For payments: a <strong>Stripe account</strong> (free to create, 2.9% + 30¢ per transaction). For SMS: a <strong>Twilio account</strong> (optional, ~$0.01/text). For calendar sync: a <strong>Google account</strong>. For Done For You, we handle the technical setup on your accounts — you just create them.</div>
         </details>
         <details>
-          <summary>Is there a demo I can try?</summary>
-          <div class="faq-answer">Yes — <a href="https://demo.wellspringweb.com" target="_blank">demo.wellspringweb.com</a> is a fully working demo. You can explore the public site, go through the booking flow, and see the patient portal. The admin panel is also accessible in the demo.</div>
+          <summary>Is patient data secure and HIPAA-compliant?</summary>
+          <div class="faq-answer">Patient data is stored in Supabase with row-level security — only authenticated users can access their own records. For full HIPAA compliance, Supabase Pro ($25/mo) with a signed Business Associate Agreement (BAA) is required. Our setup guide covers this step-by-step. We recommend consulting a healthcare compliance professional for your specific situation.</div>
         </details>
         <details>
-          <summary>What if I need help after purchase?</summary>
-          <div class="faq-answer">Every purchase includes a detailed setup guide covering all features and integrations. For additional support, WellSpring Digital offers setup and customization services — <a href="https://wellspringweb.com/contact" target="_blank">contact us</a>.</div>
+          <summary>Is there a live demo I can try?</summary>
+          <div class="faq-answer">Yes — <a href="https://demo.wellspringweb.com" target="_blank">demo.wellspringweb.com</a> is a fully working demo. You can go through the booking flow, log in to the patient portal, and access the admin panel to see how customization works — before buying anything.</div>
         </details>
       </div>
     </div>
@@ -717,11 +1035,11 @@
 <!-- ── DEMO CTA ── -->
 <div class="demo-cta">
   <div class="section-tag">See It In Action</div>
-  <h2>Try the live demo<br /><em>before you buy</em></h2>
-  <p class="section-sub">The demo is fully interactive — book a fake appointment, log in to the patient portal, explore the admin panel.</p>
+  <h2>Try the live demo<br /><em>before you decide</em></h2>
+  <p class="section-sub">The demo is fully interactive — book a fake appointment, log in to the patient portal, and explore the admin panel.</p>
   <div class="demo-btns">
     <a href="https://demo.wellspringweb.com" target="_blank" class="btn-hero-secondary" style="font-size:15px; padding:15px 28px;">▶ Open Live Demo</a>
-    <a href="#pricing" class="btn-hero-primary" style="font-size:15px; padding:15px 28px;">Get ChiroTemplate — $499 →</a>
+    <a href="#pricing" class="btn-hero-primary" style="font-size:15px; padding:15px 28px;">See Plans &amp; Pricing →</a>
   </div>
 </div>
 
@@ -733,7 +1051,7 @@
     <span style="font-size:13px;color:#555;">by WellSpring Digital</span>
   </div>
   <p class="footer-text">
-    © 2025 WellSpring Digital ·
+    © 2026 WellSpring Digital ·
     <a href="https://wellspringweb.com">wellspringweb.com</a> ·
     <a href="https://demo.wellspringweb.com" target="_blank">Live Demo</a> ·
     <a href="https://wellspringweb.com/contact">Contact</a>
