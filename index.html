@@ -5,6 +5,59 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>ChiroTemplate — Professional Chiropractic Website, Done For You</title>
   <meta name="description" content="A complete chiropractic website with online booking, patient portal, and payments — built for chiropractors. Three plans: Template Only $1,299, Guided Setup $2,499, or Done-For-You managed at $349/month." />
+
+  <!-- Canonical -->
+  <link rel="canonical" href="https://chiro.wellspringweb.com" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://chiro.wellspringweb.com" />
+  <meta property="og:title" content="ChiroTemplate — Professional Chiropractic Website, Done For You" />
+  <meta property="og:description" content="A complete chiropractic website with online booking, patient portal, and payments — built specifically for chiropractors. Launch in under 48 hours." />
+  <meta property="og:image" content="https://chiro.wellspringweb.com/demo-preview.jpg" />
+
+  <!-- Twitter/X Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="ChiroTemplate — Professional Chiropractic Website, Done For You" />
+  <meta name="twitter:description" content="A complete chiropractic website with online booking, patient portal, and payments — built specifically for chiropractors. Launch in under 48 hours." />
+  <meta name="twitter:image" content="https://chiro.wellspringweb.com/demo-preview.jpg" />
+
+  <!-- JSON-LD Product Schema -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "ChiroTemplate",
+    "description": "A complete chiropractic practice website with online booking, patient portal, staff portal, integrated payments, and admin panel. Available as source code template or fully managed.",
+    "applicationCategory": "BusinessApplication",
+    "operatingSystem": "Web",
+    "url": "https://chiro.wellspringweb.com",
+    "offers": [
+      {
+        "@type": "Offer",
+        "name": "Template Only",
+        "price": "1299",
+        "priceCurrency": "USD",
+        "description": "Full source code, yours forever."
+      },
+      {
+        "@type": "Offer",
+        "name": "Guided Setup",
+        "price": "2499",
+        "priceCurrency": "USD",
+        "description": "We set everything up with you over 3 Zoom sessions."
+      },
+      {
+        "@type": "Offer",
+        "name": "Done For You",
+        "price": "349",
+        "priceCurrency": "USD",
+        "description": "Fully managed — we deploy, configure, and maintain everything."
+      }
+    ]
+  }
+  </script>
+
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,700;1,700&display=swap" rel="stylesheet" />
   <style>
@@ -171,7 +224,7 @@
       box-shadow: 0 8px 24px rgba(0,0,0,0.4);
     }
     .mockup-float.top-right { top: 16px; right: -20px; }
-    .mockup-float.bottom-right { bottom: 22%; right: 12px; }
+    .mockup-float.bottom-right { bottom: 38%; right: -20px; }
     .badge-icon { font-size: 16px; }
 
     /* ── TRUST ── */
@@ -467,6 +520,7 @@
       background: var(--bg3);
       color: var(--text);
     }
+    .pricing-card-featured .card-top { padding-top: 17px; padding-bottom: 9px; }
     .card-top .pricing-tagline { color: #888; }
     .card-top .price-was { color: #666; }
     .card-top .price-was s { color: #555; }
@@ -914,7 +968,7 @@
           </div>
         <div class="dfy-toggle">
           <button id="dfy-btn-monthly" class="dfy-active" onclick="dfySwitch('monthly')">Monthly — $349/mo</button>
-          <button id="dfy-btn-yearly" onclick="dfySwitch('yearly')">Annual — Pay yearly</button>
+          <button id="dfy-btn-yearly" onclick="dfySwitch('yearly')">Annual — $2999/yr</button>
         </div>
         <div id="dfy-monthly">
           <stripe-buy-button
