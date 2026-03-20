@@ -3,8 +3,9 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>ChiroTemplate — Professional Chiropractic Website, Done For You</title>
-  <meta name="description" content="A complete chiropractic website with online booking, patient portal, and payments — built for chiropractors. Three plans: Template Only $1,299, Guided Setup $2,499, or Done-For-You managed at $349/month." />
+  <title>Chiropractic Website Template with Booking, Patient Portal & Payments | ChiroTemplate</title>
+  <meta name="description" content="The complete chiropractic website template — online booking, patient portal, staff portal, Stripe payments, and HIPAA-ready architecture. Template from $1,299 or fully managed at $349/month. Live demo available." />
+  <meta name="keywords" content="chiropractic website template, chiropractor website builder, chiropractic practice management software, HIPAA chiropractic website, chiropractic patient portal, online booking for chiropractors, chiropractic website design" />
 
   <!-- Canonical -->
   <link rel="canonical" href="https://chiro.wellspringweb.com" />
@@ -12,47 +13,108 @@
   <!-- Open Graph -->
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://chiro.wellspringweb.com" />
-  <meta property="og:title" content="ChiroTemplate — Professional Chiropractic Website, Done For You" />
-  <meta property="og:description" content="A complete chiropractic website with online booking, patient portal, and payments — built specifically for chiropractors. Launch in under 48 hours." />
+  <meta property="og:title" content="Chiropractic Website Template — Booking, Patient Portal & Payments | ChiroTemplate" />
+  <meta property="og:description" content="The complete chiropractic website template with online booking, patient portal, staff portal, and Stripe payments. HIPAA-ready. Launch in under 48 hours." />
   <meta property="og:image" content="https://chiro.wellspringweb.com/demo-preview.jpg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:site_name" content="ChiroTemplate by WellSpring Digital" />
 
   <!-- Twitter/X Card -->
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="ChiroTemplate — Professional Chiropractic Website, Done For You" />
-  <meta name="twitter:description" content="A complete chiropractic website with online booking, patient portal, and payments — built specifically for chiropractors. Launch in under 48 hours." />
+  <meta name="twitter:title" content="Chiropractic Website Template — Booking, Patient Portal & Payments" />
+  <meta name="twitter:description" content="The complete chiropractic website template with online booking, patient portal, staff portal, and Stripe payments. HIPAA-ready. Launch in under 48 hours." />
   <meta name="twitter:image" content="https://chiro.wellspringweb.com/demo-preview.jpg" />
 
-  <!-- JSON-LD Product Schema -->
+  <!-- JSON-LD: SoftwareApplication + FAQ -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "SoftwareApplication",
     "name": "ChiroTemplate",
-    "description": "A complete chiropractic practice website with online booking, patient portal, staff portal, integrated payments, and admin panel. Available as source code template or fully managed.",
+    "description": "A complete chiropractic practice website template with online booking, patient portal, staff portal, integrated Stripe payments, appointment reminders, and HIPAA-ready architecture. Available as source code or fully managed.",
     "applicationCategory": "BusinessApplication",
     "operatingSystem": "Web",
     "url": "https://chiro.wellspringweb.com",
+    "screenshot": "https://chiro.wellspringweb.com/demo-preview.jpg",
+    "featureList": "Online booking, patient portal, staff portal, Stripe payments, SMS/email reminders, HIPAA-ready, Google Calendar integration, exercise library, admin panel",
     "offers": [
       {
         "@type": "Offer",
         "name": "Template Only",
         "price": "1299",
         "priceCurrency": "USD",
-        "description": "Full source code, yours forever."
+        "description": "Full source code, yours forever. Self-setup with detailed guide."
       },
       {
         "@type": "Offer",
         "name": "Guided Setup",
         "price": "2499",
         "priceCurrency": "USD",
-        "description": "We set everything up with you over 3 Zoom sessions."
+        "description": "We set everything up with you over 3 live Zoom sessions. No monthly fees."
       },
       {
         "@type": "Offer",
         "name": "Done For You",
         "price": "349",
         "priceCurrency": "USD",
-        "description": "Fully managed — we deploy, configure, and maintain everything."
+        "description": "Fully managed — deployment, configuration, updates, and ongoing support."
+      }
+    ]
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What's the difference between the three plans?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Template Only ($1,299 one-time): full source code, self-setup using our detailed guide. Guided Setup ($2,499 one-time): we set everything up together across 3 live Zoom sessions — you own it on your accounts with no monthly fees, 90 days of email support, and 12 months of updates. Done For You ($349/month): we handle deployment, configuration, hosting, updates, and support — your site is live in under 48 hours."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What does $349/month cover for Done For You?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Everything: Netlify hosting, Supabase database, initial deployment and configuration of all integrations (Stripe, email/SMS notifications), ongoing maintenance, all code updates, and priority email support. Third-party costs (Twilio, Stripe transaction fees, your domain) are paid directly by your practice."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Is patient data secure and HIPAA-compliant?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Patient data is stored in Supabase with row-level security — only authenticated users can access their own records. For full HIPAA compliance, Supabase Pro ($25/mo) with a signed Business Associate Agreement (BAA) is required. Our setup guide covers this step-by-step."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can I customize the design?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes — the admin panel lets you set your logo, brand colors, fonts, services, team bios, hours, and all page content without touching code. For deeper custom work, we offer custom development as an add-on."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Is there a live demo I can try?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes — demo.wellspringweb.com is a fully working demo. You can go through the booking flow, log in to the patient portal, and access the admin panel to see how customization works — before buying anything."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What happens if I cancel the Done For You plan?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "You can cancel anytime — no long-term contract. If you cancel within your first 12 months and want to keep your site, a one-time $1,299 template license fee applies. After 12 months, you can take full ownership of your site files at no additional charge."
+        }
       }
     ]
   }
