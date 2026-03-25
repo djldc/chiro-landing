@@ -1,0 +1,895 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Environment Setup Generator — ChiroTemplate</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #f0ede8; color: #333; min-height: 100vh; }
+
+    /* ── Nav ── */
+    nav { background: rgba(14,14,14,0.97); padding: 14px 32px; display: flex; align-items: center; gap: 12px; position: sticky; top: 0; z-index: 100; }
+    .nav-mark { width: 30px; height: 30px; border-radius: 7px; background: linear-gradient(135deg,#1a4a6e,#2d7dd2); display: flex; align-items: center; justify-content: center; color: #fff; font-size: 15px; font-weight: 700; }
+    .nav-title { color: #c9a84c; font-weight: 700; font-size: 15px; }
+    .nav-sub { color: #666; font-size: 13px; margin-left: 4px; }
+
+    /* ── Layout ── */
+    .page { max-width: 760px; margin: 0 auto; padding: 40px 20px 80px; }
+
+    /* ── Security banner ── */
+    .security-banner {
+      background: #1a3a1a;
+      border: 1px solid #2d6a2d;
+      border-radius: 12px;
+      padding: 16px 20px;
+      margin-bottom: 36px;
+      display: flex;
+      gap: 14px;
+      align-items: flex-start;
+    }
+    .security-banner .icon { font-size: 24px; flex-shrink: 0; margin-top: 2px; }
+    .security-banner h3 { color: #6fcf6f; font-size: 14px; font-weight: 700; margin-bottom: 4px; }
+    .security-banner p { color: #aaa; font-size: 13px; line-height: 1.6; }
+    .security-banner strong { color: #6fcf6f; }
+
+    /* ── Page header ── */
+    .page-header { text-align: center; margin-bottom: 40px; }
+    .page-header h1 { font-size: 28px; font-weight: 800; color: #1a1a1a; margin-bottom: 8px; }
+    .page-header p { color: #666; font-size: 15px; }
+    .var-count { display: inline-block; background: #1a4a6e; color: #fff; font-size: 12px; font-weight: 700; padding: 4px 12px; border-radius: 20px; margin-top: 10px; }
+
+    /* ── Progress ── */
+    .progress-wrap { margin-bottom: 36px; }
+    .progress-steps { display: flex; align-items: center; gap: 0; }
+    .prog-step { display: flex; flex-direction: column; align-items: center; flex: 1; position: relative; }
+    .prog-step:not(:last-child)::after { content: ''; position: absolute; top: 16px; left: 50%; width: 100%; height: 2px; background: #ddd; z-index: 0; }
+    .prog-step.done::after, .prog-step.active::after { background: #2d7dd2; }
+    .prog-dot { width: 32px; height: 32px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 700; position: relative; z-index: 1; border: 2px solid #ddd; background: #f0ede8; color: #aaa; transition: all 0.3s; }
+    .prog-step.done .prog-dot { background: #2d7dd2; border-color: #2d7dd2; color: #fff; }
+    .prog-step.active .prog-dot { background: #fff; border-color: #2d7dd2; color: #2d7dd2; box-shadow: 0 0 0 4px rgba(45,125,210,0.15); }
+    .prog-label { font-size: 11px; color: #aaa; margin-top: 6px; text-align: center; font-weight: 600; white-space: nowrap; }
+    .prog-step.active .prog-label { color: #2d7dd2; }
+    .prog-step.done .prog-label { color: #2d7dd2; }
+
+    /* ── Step card ── */
+    .step-card { background: #fff; border-radius: 16px; padding: 32px; box-shadow: 0 4px 20px rgba(0,0,0,0.08); margin-bottom: 20px; display: none; }
+    .step-card.active { display: block; }
+    .step-header { margin-bottom: 24px; }
+    .step-number { font-size: 11px; font-weight: 700; color: #2d7dd2; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 6px; }
+    .step-title { font-size: 22px; font-weight: 800; color: #1a1a1a; margin-bottom: 6px; }
+    .step-desc { font-size: 14px; color: #666; line-height: 1.6; }
+    .optional-badge { display: inline-block; background: #f0f7ff; color: #2d7dd2; font-size: 11px; font-weight: 700; padding: 2px 10px; border-radius: 10px; margin-left: 8px; vertical-align: middle; }
+
+    /* ── Fields ── */
+    .field { margin-bottom: 22px; }
+    .field label { display: block; font-size: 13px; font-weight: 700; color: #444; margin-bottom: 6px; }
+    .field label .req { color: #e53e3e; margin-left: 3px; }
+    .field input[type=text], .field input[type=url], .field input[type=email], .field input[type=password], .field input[type=color] {
+      width: 100%; padding: 12px 14px; border: 1.5px solid #e0ddd8; border-radius: 10px; font-size: 14px;
+      font-family: 'SF Mono', 'Fira Code', monospace; background: #fafaf8; transition: border-color 0.2s;
+      color: #333;
+    }
+    .field input:focus { outline: none; border-color: #2d7dd2; background: #fff; }
+    .field input[type=color] { padding: 4px 8px; height: 44px; cursor: pointer; font-family: inherit; }
+    .field-hint { font-size: 12px; color: #999; margin-top: 6px; line-height: 1.5; }
+    .field-hint a { color: #2d7dd2; text-decoration: none; }
+    .field-hint a:hover { text-decoration: underline; }
+    .field-derived { background: #f0f7ff; border: 1.5px solid #bee3f8; border-radius: 10px; padding: 12px 14px; font-size: 13px; font-family: 'SF Mono','Fira Code',monospace; color: #2d7dd2; word-break: break-all; min-height: 44px; }
+    .field-derived:empty::before { content: 'Will be filled automatically'; color: #aaa; font-style: italic; font-family: inherit; }
+    .derived-label { font-size: 11px; font-weight: 700; color: #2d7dd2; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 4px; }
+
+    /* ── Auto-derived group ── */
+    .derived-group { background: #f8fbff; border: 1px solid #d0e8f8; border-radius: 12px; padding: 18px 20px; margin-top: 8px; }
+    .derived-group-title { font-size: 12px; font-weight: 700; color: #2d7dd2; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 14px; display: flex; align-items: center; gap: 6px; }
+    .derived-row { margin-bottom: 12px; }
+    .derived-row:last-child { margin-bottom: 0; }
+
+    /* ── Toggle ── */
+    .toggle-group { border: 1.5px solid #e0ddd8; border-radius: 12px; overflow: hidden; margin-bottom: 20px; }
+    .toggle-header { padding: 14px 18px; display: flex; align-items: center; justify-content: space-between; cursor: pointer; background: #fafaf8; }
+    .toggle-header:hover { background: #f5f2ec; }
+    .toggle-title { font-size: 15px; font-weight: 700; color: #333; }
+    .toggle-switch { width: 44px; height: 24px; background: #ddd; border-radius: 12px; position: relative; transition: background 0.2s; flex-shrink: 0; }
+    .toggle-switch.on { background: #2d7dd2; }
+    .toggle-switch::after { content: ''; position: absolute; top: 3px; left: 3px; width: 18px; height: 18px; background: #fff; border-radius: 50%; transition: transform 0.2s; box-shadow: 0 1px 3px rgba(0,0,0,0.2); }
+    .toggle-switch.on::after { transform: translateX(20px); }
+    .toggle-body { padding: 0 18px; max-height: 0; overflow: hidden; transition: max-height 0.3s ease, padding 0.3s ease; }
+    .toggle-body.open { max-height: 600px; padding: 18px 18px; }
+
+    /* ── SMS radio ── */
+    .sms-radio-group { display: flex; gap: 10px; margin-bottom: 20px; }
+    .sms-radio { flex: 1; border: 2px solid #e0ddd8; border-radius: 10px; padding: 12px 16px; cursor: pointer; transition: all 0.2s; text-align: center; }
+    .sms-radio.selected { border-color: #2d7dd2; background: #f0f7ff; }
+    .sms-radio input { display: none; }
+    .sms-radio span { font-size: 14px; font-weight: 700; color: #555; display: block; }
+    .sms-radio.selected span { color: #2d7dd2; }
+    .sms-panel { display: none; }
+    .sms-panel.active { display: block; }
+
+    /* ── Secret field ── */
+    .secret-field { position: relative; }
+    .secret-field input { padding-right: 80px; }
+    .secret-toggle { position: absolute; right: 12px; top: 50%; transform: translateY(-50%); font-size: 12px; color: #888; cursor: pointer; background: none; border: none; font-weight: 600; padding: 4px 8px; }
+    .secret-toggle:hover { color: #333; }
+
+    /* ── Auto-generated secret ── */
+    .generated-secret { background: #1a1a2e; border-radius: 10px; padding: 14px 18px; font-family: 'SF Mono','Fira Code',monospace; font-size: 13px; color: #6fcf6f; word-break: break-all; margin-top: 8px; display: flex; gap: 12px; align-items: center; }
+    .regen-btn { background: none; border: 1px solid #6fcf6f; color: #6fcf6f; font-size: 11px; padding: 4px 10px; border-radius: 6px; cursor: pointer; white-space: nowrap; flex-shrink: 0; font-weight: 700; }
+    .regen-btn:hover { background: #6fcf6f22; }
+
+    /* ── Nav buttons ── */
+    .step-nav { display: flex; justify-content: space-between; align-items: center; margin-top: 32px; padding-top: 24px; border-top: 1px solid #f0ede8; }
+    .btn-back { padding: 12px 24px; border: 1.5px solid #ddd; background: #fff; border-radius: 10px; font-size: 14px; font-weight: 700; color: #666; cursor: pointer; transition: all 0.2s; }
+    .btn-back:hover { border-color: #999; color: #333; }
+    .btn-next { padding: 12px 28px; background: #1a4a6e; border: none; border-radius: 10px; font-size: 14px; font-weight: 700; color: #fff; cursor: pointer; transition: background 0.2s; }
+    .btn-next:hover { background: #2d7dd2; }
+    .btn-generate { padding: 14px 32px; background: linear-gradient(135deg, #1a4a6e, #2d7dd2); border: none; border-radius: 10px; font-size: 16px; font-weight: 800; color: #fff; cursor: pointer; transition: opacity 0.2s; width: 100%; margin-top: 8px; }
+    .btn-generate:hover { opacity: 0.9; }
+
+    /* ── Output ── */
+    .output-section { display: none; }
+    .output-section.visible { display: block; }
+    .output-card { background: #fff; border-radius: 16px; padding: 32px; box-shadow: 0 4px 20px rgba(0,0,0,0.08); }
+    .output-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 20px; flex-wrap: wrap; gap: 12px; }
+    .output-title { font-size: 20px; font-weight: 800; color: #1a1a1a; }
+    .output-actions { display: flex; gap: 10px; }
+    .btn-copy { padding: 10px 20px; background: #1a4a6e; color: #fff; border: none; border-radius: 8px; font-size: 13px; font-weight: 700; cursor: pointer; }
+    .btn-copy:hover { background: #2d7dd2; }
+    .btn-copy.copied { background: #2d8a4e; }
+    .btn-download { padding: 10px 20px; background: #fff; color: #1a4a6e; border: 2px solid #1a4a6e; border-radius: 8px; font-size: 13px; font-weight: 700; cursor: pointer; }
+    .btn-download:hover { background: #f0f7ff; }
+    .output-textarea { width: 100%; min-height: 320px; font-family: 'SF Mono','Fira Code',monospace; font-size: 12px; line-height: 1.7; background: #0d1117; color: #e6edf3; border: none; border-radius: 10px; padding: 20px; resize: vertical; }
+    .output-warn { background: #fff8e6; border: 1px solid #f59e0b; border-radius: 10px; padding: 14px 18px; margin-top: 20px; font-size: 13px; color: #92400e; line-height: 1.6; }
+    .output-warn strong { color: #78350f; }
+
+    /* ── Netlify steps ── */
+    .netlify-steps { margin-top: 28px; }
+    .netlify-steps h3 { font-size: 16px; font-weight: 800; color: #1a1a1a; margin-bottom: 16px; }
+    .nl-step { display: flex; gap: 14px; margin-bottom: 16px; align-items: flex-start; }
+    .nl-num { width: 28px; height: 28px; border-radius: 50%; background: #1a4a6e; color: #fff; font-size: 13px; font-weight: 700; display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 1px; }
+    .nl-text { font-size: 14px; color: #444; line-height: 1.6; }
+    .nl-text strong { color: #1a1a1a; }
+    .nl-text code { background: #f0ede8; padding: 2px 7px; border-radius: 4px; font-size: 12px; font-family: 'SF Mono','Fira Code',monospace; color: #c0392b; }
+
+    /* ── Callout ── */
+    .callout-warn { background: #fff0f0; border-left: 4px solid #e53e3e; border-radius: 0 10px 10px 0; padding: 14px 18px; margin: 16px 0; font-size: 13px; color: #c0392b; }
+    .callout-info { background: #f0f7ff; border-left: 4px solid #2d7dd2; border-radius: 0 10px 10px 0; padding: 14px 18px; margin: 16px 0; font-size: 13px; color: #1a4a6e; }
+
+    /* ── Summary ── */
+    .summary-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 24px; }
+    .summary-item { background: #f8f9fb; border-radius: 10px; padding: 14px 16px; }
+    .summary-item .s-label { font-size: 11px; font-weight: 700; color: #888; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 4px; }
+    .summary-item .s-val { font-size: 13px; font-weight: 700; color: #1a4a6e; word-break: break-all; }
+    .summary-item .s-val.ok { color: #2d8a4e; }
+    .summary-item .s-val.skip { color: #aaa; font-weight: 400; font-style: italic; }
+
+    @media (max-width: 600px) {
+      .page { padding: 24px 14px 60px; }
+      .step-card { padding: 22px 18px; }
+      .progress-steps { gap: 0; }
+      .prog-label { font-size: 9px; }
+      .summary-grid { grid-template-columns: 1fr; }
+      .output-header { flex-direction: column; }
+      .output-actions { width: 100%; }
+      .btn-copy, .btn-download { flex: 1; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-mark">&#9877;</div>
+  <span class="nav-title">ChiroTemplate</span>
+  <span class="nav-sub">Environment Setup Generator</span>
+</nav>
+
+<div class="page">
+
+  <!-- Security Banner -->
+  <div class="security-banner">
+    <div class="icon">&#128274;</div>
+    <div>
+      <h3>Your keys never leave your browser</h3>
+      <p>This tool runs <strong>100% locally</strong> — no data is sent to any server. Every API key you enter stays on your computer. The generated file is assembled in JavaScript memory and copied or downloaded directly to your device. You can <a href="javascript:void(0)" onclick="alert('Right-click this page → View Page Source to inspect all JavaScript. There are no fetch() or XMLHttpRequest calls.')" style="color:#6fcf6f;">inspect the source</a> to verify.</p>
+    </div>
+  </div>
+
+  <!-- Header -->
+  <div class="page-header">
+    <h1>Generate Your Netlify Environment File</h1>
+    <p>Answer a few questions — we'll generate all your environment variables ready to paste into Netlify in one shot.</p>
+    <span class="var-count">Fills all ~31 variables automatically</span>
+  </div>
+
+  <!-- Progress -->
+  <div class="progress-wrap">
+    <div class="progress-steps" id="progressSteps">
+      <!-- Injected by JS -->
+    </div>
+  </div>
+
+  <!-- ── STEP 1: Your Site ── -->
+  <div class="step-card active" data-step="1">
+    <div class="step-header">
+      <div class="step-number">Step 1 of 7</div>
+      <div class="step-title">Your Site Domain</div>
+      <div class="step-desc">Enter your practice website domain. This automatically fills several related variables so you don't have to type them separately.</div>
+    </div>
+
+    <div class="field">
+      <label>Your Domain <span class="req">*</span></label>
+      <input type="url" id="f_domain" placeholder="https://mypractice.com" oninput="onDomainChange()" />
+      <div class="field-hint">Include <code>https://</code> — no trailing slash. Example: <code>https://ahpts.com</code></div>
+    </div>
+
+    <div class="derived-group">
+      <div class="derived-group-title">&#9889; Auto-filled from your domain</div>
+      <div class="derived-row">
+        <div class="derived-label">SITE_URL</div>
+        <div class="field-derived" id="d_site_url"></div>
+      </div>
+      <div class="derived-row">
+        <div class="derived-label">PORTAL_URL</div>
+        <div class="field-derived" id="d_portal_url"></div>
+      </div>
+      <div class="derived-row">
+        <div class="derived-label">NOTIFY_FUNCTION_URL</div>
+        <div class="field-derived" id="d_notify_url"></div>
+      </div>
+      <div class="derived-row">
+        <div class="derived-label">URL (Netlify internal)</div>
+        <div class="field-derived" id="d_url"></div>
+      </div>
+    </div>
+
+    <div class="step-nav">
+      <div></div>
+      <button class="btn-next" onclick="goNext(1)">Next: Supabase &rarr;</button>
+    </div>
+  </div>
+
+  <!-- ── STEP 2: Supabase ── -->
+  <div class="step-card" data-step="2">
+    <div class="step-header">
+      <div class="step-number">Step 2 of 7</div>
+      <div class="step-title">Supabase</div>
+      <div class="step-desc">Your database and authentication provider. Find all three values in your Supabase Dashboard → Settings → API.</div>
+    </div>
+
+    <div class="callout-info">
+      &#128161; <a href="https://supabase.com/dashboard" target="_blank" rel="noopener">Open Supabase Dashboard</a> → select your project → Settings (gear icon) → API. You'll see all three values on that page.
+    </div>
+
+    <div class="field">
+      <label>Project URL <span class="req">*</span></label>
+      <input type="url" id="f_sb_url" placeholder="https://xjbvnaabnmjlpygwerjy.supabase.co" oninput="onSupabaseChange()" />
+      <div class="field-hint">Labeled "Project URL" — looks like <code>https://xxxxxxxxxxxx.supabase.co</code></div>
+    </div>
+
+    <div class="field">
+      <label>Anon / Public Key <span class="req">*</span></label>
+      <div class="secret-field">
+        <input type="password" id="f_sb_anon" placeholder="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..." oninput="onSupabaseChange()" />
+        <button class="secret-toggle" onclick="toggleSecret('f_sb_anon', this)">Show</button>
+      </div>
+      <div class="field-hint">Labeled "anon public" — safe to use in frontend code. Fills both <code>SUPABASE_ANON_KEY</code> and <code>VITE_SUPABASE_ANON_KEY</code>.</div>
+    </div>
+
+    <div class="field">
+      <label>Service Role Key <span class="req">*</span></label>
+      <div class="secret-field">
+        <input type="password" id="f_sb_service" placeholder="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..." />
+        <button class="secret-toggle" onclick="toggleSecret('f_sb_service', this)">Show</button>
+      </div>
+      <div class="field-hint" style="color:#c0392b;">&#9888; Labeled "service_role" — bypasses Row Level Security. <strong>Never share this or put it in frontend code.</strong> Server-side only (Netlify Functions).</div>
+    </div>
+
+    <div class="derived-group">
+      <div class="derived-group-title">&#9889; Auto-filled from Supabase URL</div>
+      <div class="derived-row">
+        <div class="derived-label">VITE_SUPABASE_URL (same as Project URL)</div>
+        <div class="field-derived" id="d_vite_sb_url"></div>
+      </div>
+      <div class="derived-row">
+        <div class="derived-label">VITE_SUPABASE_ANON_KEY (same as Anon Key)</div>
+        <div class="field-derived" id="d_vite_sb_anon">Will match your Anon Key above</div>
+      </div>
+    </div>
+
+    <div class="step-nav">
+      <button class="btn-back" onclick="goBack(2)">&larr; Back</button>
+      <button class="btn-next" onclick="goNext(2)">Next: Email &rarr;</button>
+    </div>
+  </div>
+
+  <!-- ── STEP 3: Email ── -->
+  <div class="step-card" data-step="3">
+    <div class="step-header">
+      <div class="step-number">Step 3 of 7</div>
+      <div class="step-title">Email (Resend)</div>
+      <div class="step-desc">Resend powers all patient emails — confirmations, reminders, portal invites. Your "From" address must be a domain you've verified in Resend.</div>
+    </div>
+
+    <div class="callout-info">
+      &#128161; <a href="https://resend.com/api-keys" target="_blank" rel="noopener">Resend API Keys</a> — create a key with "Full Access." Your sending domain must be verified under <a href="https://resend.com/domains" target="_blank" rel="noopener">Resend → Domains</a>.
+    </div>
+
+    <div class="field">
+      <label>Resend API Key <span class="req">*</span></label>
+      <div class="secret-field">
+        <input type="password" id="f_resend_key" placeholder="re_xxxxxxxxxxxxxxxxxxxx" />
+        <button class="secret-toggle" onclick="toggleSecret('f_resend_key', this)">Show</button>
+      </div>
+      <div class="field-hint">Starts with <code>re_</code></div>
+    </div>
+
+    <div class="field">
+      <label>From Email Address <span class="req">*</span></label>
+      <input type="email" id="f_from_email" placeholder="noreply@from.mypractice.com" />
+      <div class="field-hint">Must be on a Resend-verified domain. Recommended format: <code>noreply@from.yourdomain.com</code> or <code>info@from.yourdomain.com</code></div>
+    </div>
+
+    <div class="field">
+      <label>Reply-To Email Address <span class="req">*</span></label>
+      <input type="email" id="f_reply_to" placeholder="doctor@mypractice.com" />
+      <div class="field-hint">Where patients' replies go — typically your practice's main email or doctor's email.</div>
+    </div>
+
+    <div class="step-nav">
+      <button class="btn-back" onclick="goBack(3)">&larr; Back</button>
+      <button class="btn-next" onclick="goNext(3)">Next: Practice Info &rarr;</button>
+    </div>
+  </div>
+
+  <!-- ── STEP 4: Practice Info ── -->
+  <div class="step-card" data-step="4">
+    <div class="step-header">
+      <div class="step-number">Step 4 of 7</div>
+      <div class="step-title">Practice Info</div>
+      <div class="step-desc">Used in automated email templates so patients see your practice name and brand color — not generic placeholders.</div>
+    </div>
+
+    <div class="field">
+      <label>Practice Name <span class="req">*</span></label>
+      <input type="text" id="f_practice_name" placeholder="Advanced Health & Physical Therapy" />
+    </div>
+
+    <div class="field">
+      <label>Primary Brand Color</label>
+      <div style="display:flex; gap:12px; align-items:center;">
+        <input type="color" id="f_primary_color" value="#1a4a6e" style="width:80px; flex-shrink:0;" />
+        <input type="text" id="f_primary_color_hex" value="#1a4a6e" placeholder="#1a4a6e" oninput="syncColorFromText()" style="font-family:'SF Mono','Fira Code',monospace;" />
+      </div>
+      <div class="field-hint">Hex color used in email headers and buttons. Should match your website's primary color.</div>
+    </div>
+
+    <div class="step-nav">
+      <button class="btn-back" onclick="goBack(4)">&larr; Back</button>
+      <button class="btn-next" onclick="goNext(4)">Next: Stripe &rarr;</button>
+    </div>
+  </div>
+
+  <!-- ── STEP 5: Stripe ── -->
+  <div class="step-card" data-step="5">
+    <div class="step-header">
+      <div class="step-number">Step 5 of 7</div>
+      <div class="step-title">Stripe Payments</div>
+      <div class="step-desc">Required for patient payment processing. Use your live secret key for production.</div>
+    </div>
+
+    <div class="callout-info">
+      &#128161; <a href="https://dashboard.stripe.com/apikeys" target="_blank" rel="noopener">Stripe Dashboard → Developers → API Keys</a> — copy the <strong>Secret key</strong> (starts with <code>sk_live_</code>). Make sure you're in <strong>Live mode</strong>, not Test mode.
+    </div>
+
+    <div class="field">
+      <label>Stripe Secret Key <span class="req">*</span></label>
+      <div class="secret-field">
+        <input type="password" id="f_stripe_key" placeholder="sk_live_..." />
+        <button class="secret-toggle" onclick="toggleSecret('f_stripe_key', this)">Show</button>
+      </div>
+      <div class="field-hint" style="color:#c0392b;">&#9888; Never share this key — it can charge cards. Server-side only.</div>
+    </div>
+
+    <div class="step-nav">
+      <button class="btn-back" onclick="goBack(5)">&larr; Back</button>
+      <button class="btn-next" onclick="goNext(5)">Next: SMS &rarr;</button>
+    </div>
+  </div>
+
+  <!-- ── STEP 6: SMS ── -->
+  <div class="step-card" data-step="6">
+    <div class="step-header">
+      <div class="step-number">Step 6 of 7</div>
+      <div class="step-title">SMS Reminders <span class="optional-badge">Optional</span></div>
+      <div class="step-desc">Enable automated SMS appointment reminders. You can skip this now and add it later without regenerating the rest of your file.</div>
+    </div>
+
+    <div class="toggle-group">
+      <div class="toggle-header" onclick="toggleSection('sms')">
+        <span class="toggle-title">Enable SMS Reminders</span>
+        <div class="toggle-switch" id="sms-switch"></div>
+      </div>
+      <div class="toggle-body" id="sms-body">
+        <div class="sms-radio-group">
+          <label class="sms-radio selected" id="radio-twilio" onclick="selectSMS('twilio')">
+            <input type="radio" name="sms_provider" value="twilio" checked />
+            <span>&#128222; Twilio</span>
+          </label>
+          <label class="sms-radio" id="radio-plivo" onclick="selectSMS('plivo')">
+            <input type="radio" name="sms_provider" value="plivo" />
+            <span>&#128222; Plivo</span>
+          </label>
+        </div>
+
+        <!-- Twilio -->
+        <div class="sms-panel active" id="panel-twilio">
+          <div class="callout-info" style="margin-bottom:16px;">&#128161; <a href="https://console.twilio.com" target="_blank" rel="noopener">Twilio Console</a> — Account SID and Auth Token are on your dashboard home page. Phone number is under Phone Numbers → Manage → Active Numbers.</div>
+          <div class="field">
+            <label>Account SID</label>
+            <input type="text" id="f_twilio_sid" placeholder="ACxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx" />
+          </div>
+          <div class="field">
+            <label>Auth Token</label>
+            <div class="secret-field">
+              <input type="password" id="f_twilio_token" placeholder="your auth token" />
+              <button class="secret-toggle" onclick="toggleSecret('f_twilio_token', this)">Show</button>
+            </div>
+          </div>
+          <div class="field">
+            <label>From Phone Number</label>
+            <input type="text" id="f_twilio_from" placeholder="+12015551234" />
+            <div class="field-hint">E.164 format — include country code: <code>+1</code> then 10 digits.</div>
+          </div>
+        </div>
+
+        <!-- Plivo -->
+        <div class="sms-panel" id="panel-plivo">
+          <div class="callout-info" style="margin-bottom:16px;">&#128161; <a href="https://console.plivo.com" target="_blank" rel="noopener">Plivo Console</a> — Auth ID and Auth Token on your dashboard. Phone number under Phone Numbers → Your Numbers.</div>
+          <div class="field">
+            <label>Auth ID</label>
+            <input type="text" id="f_plivo_id" placeholder="XXXXXXXXXXXXXXXXXXXXXXXXXX" />
+            <div class="field-hint">&#9888; Add this last — it activates Plivo. Add Auth Token and From Number first.</div>
+          </div>
+          <div class="field">
+            <label>Auth Token</label>
+            <div class="secret-field">
+              <input type="password" id="f_plivo_token" placeholder="your auth token" />
+              <button class="secret-toggle" onclick="toggleSecret('f_plivo_token', this)">Show</button>
+            </div>
+          </div>
+          <div class="field">
+            <label>From Phone Number</label>
+            <input type="text" id="f_plivo_from" placeholder="+12015551234" />
+            <div class="field-hint">E.164 format — include <code>+1</code> country code.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="step-nav">
+      <button class="btn-back" onclick="goBack(6)">&larr; Back</button>
+      <button class="btn-next" onclick="goNext(6)">Next: Google Calendar &rarr;</button>
+    </div>
+  </div>
+
+  <!-- ── STEP 7: Google Calendar ── -->
+  <div class="step-card" data-step="7">
+    <div class="step-header">
+      <div class="step-number">Step 7 of 7</div>
+      <div class="step-title">Google Calendar <span class="optional-badge">Optional</span></div>
+      <div class="step-desc">Syncs booked appointments to your Google Calendar automatically. Skip if you don't need this.</div>
+    </div>
+
+    <div class="toggle-group">
+      <div class="toggle-header" onclick="toggleSection('gcal')">
+        <span class="toggle-title">Enable Google Calendar Sync</span>
+        <div class="toggle-switch" id="gcal-switch"></div>
+      </div>
+      <div class="toggle-body" id="gcal-body">
+        <div class="callout-info" style="margin-bottom:16px;">&#128161; <a href="https://console.cloud.google.com/apis/credentials" target="_blank" rel="noopener">Google Cloud Console → APIs & Credentials</a> — create an OAuth 2.0 Client ID (Web Application). Add your domain to authorized redirect URIs: <code>https://yourdomain.com/.netlify/functions/google-oauth-callback</code></div>
+        <div class="field">
+          <label>OAuth Client ID</label>
+          <input type="text" id="f_gcal_id" placeholder="xxxxxxxxxxxx-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx.apps.googleusercontent.com" />
+        </div>
+        <div class="field">
+          <label>OAuth Client Secret</label>
+          <div class="secret-field">
+            <input type="password" id="f_gcal_secret" placeholder="GOCSPX-..." />
+            <button class="secret-toggle" onclick="toggleSecret('f_gcal_secret', this)">Show</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="step-nav">
+      <button class="btn-back" onclick="goBack(7)">&larr; Back</button>
+      <button class="btn-next" onclick="goNext(7)">Review &amp; Generate &rarr;</button>
+    </div>
+  </div>
+
+  <!-- ── STEP 8: Review & Generate ── -->
+  <div class="step-card" data-step="8">
+    <div class="step-header">
+      <div class="step-number">Final Step</div>
+      <div class="step-title">Review &amp; Generate</div>
+      <div class="step-desc">Here's a summary of what you've configured. Your <code>NOTIFY_SECRET</code> has been generated automatically — a cryptographically secure random key.</div>
+    </div>
+
+    <div class="summary-grid" id="summaryGrid"></div>
+
+    <!-- Auto-generated secret -->
+    <div class="field">
+      <label>NOTIFY_SECRET — Auto-Generated</label>
+      <div class="generated-secret">
+        <span id="notifySecretDisplay" style="flex:1; word-break:break-all;"></span>
+        <button class="regen-btn" onclick="regenSecret()">&#8635; Regenerate</button>
+      </div>
+      <div class="field-hint">This protects your Netlify Functions from unauthorized access. It's already included in your generated file.</div>
+    </div>
+
+    <button class="btn-generate" onclick="generateEnv()">&#9889; Generate My .env File</button>
+
+    <div class="step-nav">
+      <button class="btn-back" onclick="goBack(8)">&larr; Back</button>
+      <div></div>
+    </div>
+  </div>
+
+  <!-- ── OUTPUT ── -->
+  <div class="output-section" id="outputSection">
+    <div class="output-card">
+      <div class="output-header">
+        <div class="output-title">&#10003; Your .env File is Ready</div>
+        <div class="output-actions">
+          <button class="btn-copy" id="copyBtn" onclick="copyEnv()">&#128203; Copy</button>
+          <button class="btn-download" onclick="downloadEnv()">&#8595; Download .env</button>
+        </div>
+      </div>
+
+      <textarea class="output-textarea" id="envOutput" readonly spellcheck="false"></textarea>
+
+      <div class="output-warn">
+        <strong>&#9888; Treat this file like a password.</strong><br />
+        &bull; Never commit it to git (<code>.env</code> is already in your <code>.gitignore</code>)<br />
+        &bull; Never share it via email or Slack<br />
+        &bull; Delete it from your Downloads folder after importing to Netlify<br />
+        &bull; Store a backup in a password manager (1Password, Bitwarden, etc.)
+      </div>
+
+      <div class="netlify-steps">
+        <h3>Next: Import into Netlify</h3>
+        <div class="nl-step">
+          <div class="nl-num">1</div>
+          <div class="nl-text">Go to your <strong>Netlify Dashboard</strong> &rarr; select your site &rarr; <strong>Site configuration</strong> &rarr; <strong>Environment variables</strong></div>
+        </div>
+        <div class="nl-step">
+          <div class="nl-num">2</div>
+          <div class="nl-text">Click <strong>"Import from a .env file"</strong></div>
+        </div>
+        <div class="nl-step">
+          <div class="nl-num">3</div>
+          <div class="nl-text">Click <code>Copy</code> above and paste the entire contents into the box, then click <strong>Import variables</strong></div>
+        </div>
+        <div class="nl-step">
+          <div class="nl-num">4</div>
+          <div class="nl-text"><strong>Trigger a redeploy</strong> — Deploys &rarr; Trigger deploy &rarr; Deploy site. Environment variables take effect on the next deploy.</div>
+        </div>
+        <div class="nl-step">
+          <div class="nl-num">5</div>
+          <div class="nl-text"><strong>Delete the .env file</strong> from your Downloads folder once imported.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div><!-- /page -->
+
+<script>
+  // ── State ──
+  const STEPS = ['Your Site','Supabase','Email','Practice','Stripe','SMS','Google Cal','Generate'];
+  let currentStep = 1;
+  let smsEnabled = false;
+  let gcalEnabled = false;
+  let smsProvider = 'twilio';
+  let notifySecret = generateSecret();
+  let envOutput = '';
+
+  // ── Init ──
+  buildProgress();
+  document.getElementById('notifySecretDisplay').textContent = notifySecret;
+  updateProgress(1);
+
+  // Color picker sync
+  document.getElementById('f_primary_color').addEventListener('input', function() {
+    document.getElementById('f_primary_color_hex').value = this.value;
+  });
+
+  function syncColorFromText() {
+    const hex = document.getElementById('f_primary_color_hex').value.trim();
+    if (/^#[0-9a-fA-F]{6}$/.test(hex)) {
+      document.getElementById('f_primary_color').value = hex;
+    }
+  }
+
+  // ── Progress ──
+  function buildProgress() {
+    const wrap = document.getElementById('progressSteps');
+    STEPS.forEach((label, i) => {
+      const step = i + 1;
+      const div = document.createElement('div');
+      div.className = 'prog-step';
+      div.id = `prog-${step}`;
+      div.innerHTML = `<div class="prog-dot">${step === 8 ? '&#10003;' : step}</div><div class="prog-label">${label}</div>`;
+      wrap.appendChild(div);
+    });
+  }
+
+  function updateProgress(step) {
+    STEPS.forEach((_, i) => {
+      const s = i + 1;
+      const el = document.getElementById(`prog-${s}`);
+      el.className = 'prog-step' + (s < step ? ' done' : s === step ? ' active' : '');
+    });
+  }
+
+  // ── Navigation ──
+  function goNext(from) {
+    if (!validateStep(from)) return;
+    showStep(from + 1);
+    if (from + 1 === 8) buildSummary();
+  }
+
+  function goBack(from) {
+    showStep(from - 1);
+  }
+
+  function showStep(step) {
+    document.querySelectorAll('.step-card').forEach(c => c.classList.remove('active'));
+    const card = document.querySelector(`[data-step="${step}"]`);
+    if (card) card.classList.add('active');
+    currentStep = step;
+    updateProgress(step);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  // ── Validation ──
+  function validateStep(step) {
+    const required = {
+      1: [['f_domain', 'Please enter your domain (e.g. https://mypractice.com)']],
+      2: [['f_sb_url','Supabase Project URL is required'],['f_sb_anon','Supabase Anon Key is required'],['f_sb_service','Supabase Service Role Key is required']],
+      3: [['f_resend_key','Resend API Key is required'],['f_from_email','From Email is required'],['f_reply_to','Reply-To Email is required']],
+      4: [['f_practice_name','Practice Name is required']],
+      5: [['f_stripe_key','Stripe Secret Key is required']],
+    };
+    const checks = required[step] || [];
+    for (const [id, msg] of checks) {
+      const el = document.getElementById(id);
+      if (!el || !el.value.trim()) {
+        el && el.focus();
+        alert(msg);
+        return false;
+      }
+    }
+    if (step === 1) {
+      const d = document.getElementById('f_domain').value.trim();
+      if (!d.startsWith('http')) { alert('Domain must start with https://'); return false; }
+    }
+    return true;
+  }
+
+  // ── Domain auto-fill ──
+  function onDomainChange() {
+    const d = document.getElementById('f_domain').value.trim().replace(/\/$/, '');
+    document.getElementById('d_site_url').textContent = d || '';
+    document.getElementById('d_portal_url').textContent = d || '';
+    document.getElementById('d_notify_url').textContent = d ? `${d}/.netlify/functions/notify` : '';
+    document.getElementById('d_url').textContent = d || '';
+  }
+
+  function onSupabaseChange() {
+    const url = document.getElementById('f_sb_url').value.trim();
+    const anon = document.getElementById('f_sb_anon').value.trim();
+    document.getElementById('d_vite_sb_url').textContent = url || '';
+    document.getElementById('d_vite_sb_anon').textContent = anon ? anon.substring(0,20) + '…' : 'Will match your Anon Key above';
+  }
+
+  // ── Toggle sections ──
+  function toggleSection(id) {
+    const body = document.getElementById(`${id}-body`);
+    const sw = document.getElementById(`${id}-switch`);
+    const isOpen = body.classList.contains('open');
+    body.classList.toggle('open', !isOpen);
+    sw.classList.toggle('on', !isOpen);
+    if (id === 'sms') smsEnabled = !isOpen;
+    if (id === 'gcal') gcalEnabled = !isOpen;
+  }
+
+  function selectSMS(provider) {
+    smsProvider = provider;
+    document.getElementById('radio-twilio').classList.toggle('selected', provider === 'twilio');
+    document.getElementById('radio-plivo').classList.toggle('selected', provider === 'plivo');
+    document.getElementById('panel-twilio').classList.toggle('active', provider === 'twilio');
+    document.getElementById('panel-plivo').classList.toggle('active', provider === 'plivo');
+  }
+
+  // ── Secret show/hide ──
+  function toggleSecret(id, btn) {
+    const input = document.getElementById(id);
+    const showing = input.type === 'text';
+    input.type = showing ? 'password' : 'text';
+    btn.textContent = showing ? 'Show' : 'Hide';
+  }
+
+  // ── Generate secret ──
+  function generateSecret() {
+    const arr = new Uint8Array(32);
+    crypto.getRandomValues(arr);
+    return Array.from(arr).map(b => b.toString(16).padStart(2, '0')).join('');
+  }
+
+  function regenSecret() {
+    notifySecret = generateSecret();
+    document.getElementById('notifySecretDisplay').textContent = notifySecret;
+  }
+
+  // ── Summary ──
+  function buildSummary() {
+    const domain = document.getElementById('f_domain').value.trim().replace(/\/$/,'');
+    const sbUrl = document.getElementById('f_sb_url').value.trim();
+    const resend = document.getElementById('f_resend_key').value.trim();
+    const fromEmail = document.getElementById('f_from_email').value.trim();
+    const practiceName = document.getElementById('f_practice_name').value.trim();
+    const stripeKey = document.getElementById('f_stripe_key').value.trim();
+
+    const items = [
+      { label: 'Domain', val: domain || '—', ok: !!domain },
+      { label: 'Supabase', val: sbUrl ? sbUrl.replace('https://','').split('.')[0] + '.supabase.co' : '—', ok: !!sbUrl },
+      { label: 'Email (Resend)', val: fromEmail || '—', ok: !!resend && !!fromEmail },
+      { label: 'Practice Name', val: practiceName || '—', ok: !!practiceName },
+      { label: 'Stripe', val: stripeKey ? (stripeKey.startsWith('sk_live') ? '✓ Live key' : '⚠ Test key?') : '—', ok: !!stripeKey },
+      { label: 'SMS', val: smsEnabled ? (smsProvider === 'twilio' ? 'Twilio' : 'Plivo') : 'Not enabled', ok: smsEnabled },
+      { label: 'Google Calendar', val: gcalEnabled ? 'Enabled' : 'Not enabled', ok: gcalEnabled },
+      { label: 'Notify Secret', val: 'Auto-generated ✓', ok: true },
+    ];
+
+    const grid = document.getElementById('summaryGrid');
+    grid.innerHTML = items.map(item => `
+      <div class="summary-item">
+        <div class="s-label">${item.label}</div>
+        <div class="s-val ${item.ok ? 'ok' : item.val === '—' || item.val.includes('Not enabled') ? 'skip' : ''}">${item.val}</div>
+      </div>
+    `).join('');
+  }
+
+  // ── Generate .env ──
+  function generateEnv() {
+    const g = id => document.getElementById(id)?.value?.trim() || '';
+    const domain = g('f_domain').replace(/\/$/, '');
+    const sbUrl   = g('f_sb_url');
+    const sbAnon  = g('f_sb_anon');
+    const sbSvc   = g('f_sb_service');
+    const resend  = g('f_resend_key');
+    const from    = g('f_from_email');
+    const replyTo = g('f_reply_to');
+    const name    = g('f_practice_name');
+    const color   = g('f_primary_color_hex') || g('f_primary_color') || '#1a4a6e';
+    const stripe  = g('f_stripe_key');
+
+    const lines = [
+      '# ═══════════════════════════════════════════════════════════════',
+      '# ChiroTemplate — Netlify Environment Variables',
+      `# Generated: ${new Date().toLocaleString()}`,
+      '# Import via: Netlify → Site config → Environment variables → Import from .env',
+      '# ⚠ Keep this file private. Delete after importing.',
+      '# ═══════════════════════════════════════════════════════════════',
+      '',
+      '# ── Site URL ─────────────────────────────────────────────────',
+      `SITE_URL=${domain}`,
+      `PORTAL_URL=${domain}`,
+      `URL=${domain}`,
+      `NOTIFY_FUNCTION_URL=${domain}/.netlify/functions/notify`,
+      '',
+      '# ── Security ─────────────────────────────────────────────────',
+      `NOTIFY_SECRET=${notifySecret}`,
+      '',
+      '# ── Supabase ─────────────────────────────────────────────────',
+      `SUPABASE_URL=${sbUrl}`,
+      `SUPABASE_ANON_KEY=${sbAnon}`,
+      `SUPABASE_SERVICE_KEY=${sbSvc}`,
+      `VITE_SUPABASE_URL=${sbUrl}`,
+      `VITE_SUPABASE_ANON_KEY=${sbAnon}`,
+      '',
+      '# ── Email (Resend) ───────────────────────────────────────────',
+      `RESEND_API_KEY=${resend}`,
+      `FROM_EMAIL=${from}`,
+      `REPLY_TO_EMAIL=${replyTo}`,
+      '',
+      '# ── Practice Info (used in email templates) ──────────────────',
+      `PRACTICE_NAME=${name}`,
+      `PRIMARY_COLOR=${color}`,
+      '',
+      '# ── Stripe ───────────────────────────────────────────────────',
+      `STRIPE_SECRET_KEY=${stripe}`,
+    ];
+
+    // SMS
+    lines.push('');
+    lines.push('# ── SMS Reminders ────────────────────────────────────────────');
+    if (smsEnabled && smsProvider === 'twilio') {
+      lines.push(`TWILIO_ACCOUNT_SID=${g('f_twilio_sid')}`);
+      lines.push(`TWILIO_AUTH_TOKEN=${g('f_twilio_token')}`);
+      lines.push(`TWILIO_FROM_NUMBER=${g('f_twilio_from')}`);
+      lines.push(`TWILIO_ENABLED=true`);
+      lines.push(`# PLIVO_AUTH_ID=`);
+      lines.push(`# PLIVO_AUTH_TOKEN=`);
+      lines.push(`# PLIVO_FROM_NUMBER=`);
+    } else if (smsEnabled && smsProvider === 'plivo') {
+      lines.push(`# TWILIO_ACCOUNT_SID=`);
+      lines.push(`# TWILIO_AUTH_TOKEN=`);
+      lines.push(`# TWILIO_FROM_NUMBER=`);
+      lines.push(`# TWILIO_ENABLED=false`);
+      lines.push(`PLIVO_AUTH_TOKEN=${g('f_plivo_token')}`);
+      lines.push(`PLIVO_FROM_NUMBER=${g('f_plivo_from')}`);
+      lines.push(`# Add PLIVO_AUTH_ID below to activate Plivo (add last)`);
+      lines.push(`PLIVO_AUTH_ID=${g('f_plivo_id')}`);
+    } else {
+      lines.push(`# SMS not configured — add Twilio or Plivo credentials here when ready`);
+      lines.push(`# TWILIO_ACCOUNT_SID=`);
+      lines.push(`# TWILIO_AUTH_TOKEN=`);
+      lines.push(`# TWILIO_FROM_NUMBER=`);
+      lines.push(`# PLIVO_AUTH_ID=`);
+      lines.push(`# PLIVO_AUTH_TOKEN=`);
+      lines.push(`# PLIVO_FROM_NUMBER=`);
+    }
+
+    // Google Calendar
+    lines.push('');
+    lines.push('# ── Google Calendar (Optional) ───────────────────────────────');
+    if (gcalEnabled) {
+      lines.push(`GOOGLE_OAUTH_CLIENT_ID=${g('f_gcal_id')}`);
+      lines.push(`GOOGLE_OAUTH_CLIENT_SECRET=${g('f_gcal_secret')}`);
+    } else {
+      lines.push(`# GOOGLE_OAUTH_CLIENT_ID=`);
+      lines.push(`# GOOGLE_OAUTH_CLIENT_SECRET=`);
+    }
+
+    // License (pre-filled by WellSpring — same for all customers)
+    lines.push('');
+    lines.push('# ── License Verification (pre-filled — do not change) ────────');
+    lines.push(`LICENSE_SUPABASE_URL=https://utfwtacpmilsvqzqfjno.supabase.co`);
+    lines.push(`LICENSE_SUPABASE_ANON_KEY=sb_publishable_xUjQRTuYnoIcodKpbkgL9w_dE6athHV`);
+
+    lines.push('');
+    lines.push('# ─────────────────────────────────────────────────────────────');
+    lines.push(`# End of file — ${lines.filter(l => l && !l.startsWith('#')).length} variables configured`);
+
+    envOutput = lines.join('\n');
+    document.getElementById('envOutput').value = envOutput;
+    document.getElementById('outputSection').classList.add('visible');
+    setTimeout(() => {
+      document.getElementById('outputSection').scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }, 100);
+  }
+
+  function copyEnv() {
+    navigator.clipboard.writeText(envOutput).then(() => {
+      const btn = document.getElementById('copyBtn');
+      btn.textContent = '✓ Copied!';
+      btn.classList.add('copied');
+      setTimeout(() => { btn.textContent = '📋 Copy'; btn.classList.remove('copied'); }, 2500);
+    });
+  }
+
+  function downloadEnv() {
+    const blob = new Blob([envOutput], { type: 'text/plain' });
+    const a = document.createElement('a');
+    a.href = URL.createObjectURL(blob);
+    a.download = '.env';
+    a.click();
+    URL.revokeObjectURL(a.href);
+  }
+</script>
+
+</body>
+</html>
