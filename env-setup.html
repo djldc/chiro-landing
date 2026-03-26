@@ -356,6 +356,20 @@
     </div>
 
     <div class="field">
+      <label>Practice Timezone <span class="req">*</span></label>
+      <select id="f_practice_tz" style="width:100%; padding:12px 14px; border:1.5px solid #e0ddd8; border-radius:10px; font-size:14px; background:#fafaf8; color:#333;">
+        <option value="America/New_York">Eastern — America/New_York (ET)</option>
+        <option value="America/Chicago">Central — America/Chicago (CT)</option>
+        <option value="America/Denver">Mountain — America/Denver (MT)</option>
+        <option value="America/Phoenix">Mountain (no DST) — America/Phoenix</option>
+        <option value="America/Los_Angeles">Pacific — America/Los_Angeles (PT)</option>
+        <option value="America/Anchorage">Alaska — America/Anchorage</option>
+        <option value="Pacific/Honolulu">Hawaii — Pacific/Honolulu</option>
+      </select>
+      <div class="field-hint">Used by appointment reminders to fire at the correct local time. Wrong timezone = reminders arrive hours off.</div>
+    </div>
+
+    <div class="field">
       <label>Primary Brand Color</label>
       <div style="display:flex; gap:12px; align-items:center;">
         <input type="color" id="f_primary_color" value="#1a4a6e" style="width:80px; flex-shrink:0;" />
@@ -814,8 +828,9 @@
       `FROM_EMAIL=${from}`,
       `REPLY_TO_EMAIL=${replyTo}`,
       '',
-      '# ── Practice Info (used in email templates) ──────────────────',
+      '# ── Practice Info (used in email templates + reminders) ────────',
       `PRACTICE_NAME=${name}`,
+      `PRACTICE_TIMEZONE=${g('f_practice_tz') || 'America/New_York'}`,
       `PRIMARY_COLOR=${color}`,
       '',
       '# ── Stripe ───────────────────────────────────────────────────',
