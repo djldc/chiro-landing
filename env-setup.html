@@ -270,7 +270,7 @@
     <div class="field">
       <label>Anon / Public Key <span class="req">*</span></label>
       <div class="secret-field">
-        <input type="password" id="f_sb_anon" placeholder="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..." oninput="onSupabaseChange()" />
+        <input type="password" id="f_sb_anon" placeholder="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..." oninput="onSupabaseChange()" autocomplete="off" />
         <button class="secret-toggle" onclick="toggleSecret('f_sb_anon', this)">Show</button>
       </div>
       <div class="field-hint">Labeled "anon public" — safe to use in frontend code. Fills both <code>SUPABASE_ANON_KEY</code> and <code>VITE_SUPABASE_ANON_KEY</code>.</div>
@@ -279,7 +279,7 @@
     <div class="field">
       <label>Service Role Key <span class="req">*</span></label>
       <div class="secret-field">
-        <input type="password" id="f_sb_service" placeholder="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..." />
+        <input type="password" id="f_sb_service" placeholder="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..." autocomplete="off" />
         <button class="secret-toggle" onclick="toggleSecret('f_sb_service', this)">Show</button>
       </div>
       <div class="field-hint" style="color:#c0392b;">&#9888; Labeled "service_role" — bypasses Row Level Security. <strong>Never share this or put it in frontend code.</strong> Server-side only (Netlify Functions).</div>
@@ -318,7 +318,7 @@
     <div class="field">
       <label>Resend API Key <span class="req">*</span></label>
       <div class="secret-field">
-        <input type="password" id="f_resend_key" placeholder="re_xxxxxxxxxxxxxxxxxxxx" />
+        <input type="password" id="f_resend_key" placeholder="re_xxxxxxxxxxxxxxxxxxxx" autocomplete="off" />
         <button class="secret-toggle" onclick="toggleSecret('f_resend_key', this)">Show</button>
       </div>
       <div class="field-hint">Starts with <code>re_</code></div>
@@ -385,7 +385,7 @@
     <div class="field">
       <label>Stripe Secret Key <span class="req">*</span></label>
       <div class="secret-field">
-        <input type="password" id="f_stripe_key" placeholder="sk_live_..." />
+        <input type="password" id="f_stripe_key" placeholder="sk_live_..." autocomplete="off" />
         <button class="secret-toggle" onclick="toggleSecret('f_stripe_key', this)">Show</button>
       </div>
       <div class="field-hint" style="color:#c0392b;">&#9888; Never share this key — it can charge cards. Server-side only.</div>
@@ -432,7 +432,7 @@
           <div class="field">
             <label>Auth Token</label>
             <div class="secret-field">
-              <input type="password" id="f_twilio_token" placeholder="your auth token" />
+              <input type="password" id="f_twilio_token" placeholder="your auth token" autocomplete="off" />
               <button class="secret-toggle" onclick="toggleSecret('f_twilio_token', this)">Show</button>
             </div>
           </div>
@@ -454,7 +454,7 @@
           <div class="field">
             <label>Auth Token</label>
             <div class="secret-field">
-              <input type="password" id="f_plivo_token" placeholder="your auth token" />
+              <input type="password" id="f_plivo_token" placeholder="your auth token" autocomplete="off" />
               <button class="secret-toggle" onclick="toggleSecret('f_plivo_token', this)">Show</button>
             </div>
           </div>
@@ -599,6 +599,15 @@
   buildProgress();
   document.getElementById('notifySecretDisplay').textContent = notifySecret;
   updateProgress(1);
+
+  // Clear any browser-autofilled values on load (prevents password managers filling wrong fields)
+  window.addEventListener('load', () => {
+    ['f_sb_anon','f_sb_service','f_resend_key','f_stripe_key','f_twilio_token','f_plivo_token','f_gcal_secret'].forEach(id => {
+      const el = document.getElementById(id);
+      if (el) el.value = '';
+    });
+    onSupabaseChange(); // Reset derived fields
+  });
 
   // Color picker sync
   document.getElementById('f_primary_color').addEventListener('input', function() {
