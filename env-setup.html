@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Environment Setup Generator — ChiroTemplate</title>
+  <title>Environment Setup Generator — WellSpring Premium Template</title>
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #f0ede8; color: #333; min-height: 100vh; }
@@ -179,8 +179,8 @@
 <body>
 
 <nav>
-  <div class="nav-mark">&#9877;</div>
-  <span class="nav-title">ChiroTemplate</span>
+  <img src="logo192.png" style="width:30px; height:30px; border-radius:7px; object-fit:contain; background:#fff; flex-shrink:0;" alt="WellSpring" />
+  <span class="nav-title">WellSpring Premium Template</span>
   <span class="nav-sub">Environment Setup Generator</span>
 </nav>
 
@@ -220,7 +220,7 @@
     <div class="field">
       <label>Your Domain <span class="req">*</span></label>
       <input type="url" id="f_domain" placeholder="https://mypractice.com" oninput="onDomainChange()" />
-      <div class="field-hint">Include <code>https://</code> — no trailing slash. Example: <code>https://ahpts.com</code></div>
+      <div class="field-hint">Include <code>https://</code> — no trailing slash. Example: <code>https://mypractice.com</code></div>
     </div>
 
     <div class="derived-group">
@@ -263,7 +263,7 @@
 
     <div class="field">
       <label>Project URL <span class="req">*</span></label>
-      <input type="url" id="f_sb_url" placeholder="https://xjbvnaabnmjlpygwerjy.supabase.co" oninput="onSupabaseChange()" />
+      <input type="url" id="f_sb_url" placeholder="https://xxxxxxxxxxxxxxxxxxxx.supabase.co" oninput="onSupabaseChange()" />
       <div class="field-hint">Labeled "Project URL" — looks like <code>https://xxxxxxxxxxxx.supabase.co</code></div>
     </div>
 
@@ -352,7 +352,7 @@
 
     <div class="field">
       <label>Practice Name <span class="req">*</span></label>
-      <input type="text" id="f_practice_name" placeholder="Advanced Health & Physical Therapy" />
+      <input type="text" id="f_practice_name" placeholder="Your Practice Name" />
     </div>
 
     <div class="field">
@@ -778,7 +778,7 @@
 
     const lines = [
       '# ═══════════════════════════════════════════════════════════════',
-      '# ChiroTemplate — Netlify Environment Variables',
+      '# WellSpring Premium Template — Netlify Environment Variables',
       `# Generated: ${new Date().toLocaleString()}`,
       '# Import via: Netlify → Site config → Environment variables → Import from .env',
       '# ⚠ Keep this file private. Delete after importing.',
