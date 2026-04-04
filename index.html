@@ -1296,5 +1296,13 @@
   </p>
 </footer>
 
+<!-- WellSpring Web Analytics -->
+<script>
+(function(){
+  var T='https://admin.wellspringweb.com/.netlify/functions/track-view',P='landing';
+  try{var d={page:location.pathname+location.search,product:P,referrer:document.referrer||''};
+  navigator.sendBeacon?navigator.sendBeacon(T,JSON.stringify(d)):fetch(T,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(d),keepalive:true});}catch(e){}
+})();
+</script>
 </body>
 </html>
